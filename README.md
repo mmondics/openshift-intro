@@ -1,6 +1,6 @@
 # openshift-intro
  
-In this tutorial, you will walk through an intoduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM zSystems, IBM Power, and x86) as well as adding more explanations for the concepts it contains.
+In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM zSystems, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
 
 ## Pre-Requisites
 1. Access to an OpenShift cluster
@@ -9,7 +9,9 @@ In this tutorial, you will walk through an intoduction to OpenShift Container Pl
 
 ## OpenShift Overview
 
-OpenShift Container Platform is a cloud-based Kubernetes container platform. The foundation of OpenShift Container Platform is based on Kubernetes and therefore shares the same technology. It is designed to allow applications and the data centers that support them to expand from just a few machines and applications to thousands of machines that serve millions of clients.
+![ocp](images/ocp.png)
+
+[OpenShift Container Platform](https://www.redhat.com/en/technologies/cloud-computing/openshift/container-platform) is a cloud-based Kubernetes container platform. The foundation of OpenShift Container Platform is based on Kubernetes and therefore shares the same technology. It is designed to allow applications and the data centers that support them to expand from just a few machines and applications to thousands of machines that serve millions of clients.
 
 OpenShift Container Platform enables you to do the following:
 
@@ -18,17 +20,19 @@ OpenShift Container Platform enables you to do the following:
 - Bring the Kubernetes platform to customer data centers and cloud.
 - Meet security, privacy, compliance, and governance requirements.
 
-With its foundation in Kubernetes, OpenShift Container Platform incorporates the same technology that serves as the engine for massive telecommunications, streaming video, gaming, banking, and other applications. Its implementation in open Red Hat technologies lets you extend your containerized applications beyond a single cloud to on-premise and multi-cloud environments.
+With its foundation in Kubernetes, OpenShift Container Platform incorporates the same technology that serves as the engine for massive telecommunications, streaming video, gaming, banking, and other applications. Its implementation in open Red Hat technologies lets you extend your containerized applications beyond a single cloud to on-premises and multi-cloud environments.
 
-**OpenShift Container Platform**, commonly referred to as OCP, is a Kubernetes environment for managing the lifecycle of container-based applications and their dependencies on various computing platforms, such as bare metal, virtualized, on-premise, and in cloud. OpenShift Container Platform deploys, configures and manages containers. OpenShift Container Platform offers usability, stability, and customization of its components.
+![ocp-stack](images/ocp-stack.png)
 
-OpenShift Container Platform utilises a number of computing resources, known as nodes. A node has a lightweight, secure operating system based on Red Hat Enterprise Linux (RHEL), known as Red Hat Enterprise Linux CoreOS (RHCOS).
+**OpenShift Container Platform**, commonly referred to as OCP, is a Kubernetes environment for managing the lifecycle of container-based applications and their dependencies on various computing platforms, such as bare metal, virtualized, on-premises, and in cloud. OpenShift Container Platform deploys, configures and manages containers. OpenShift Container Platform offers usability, stability, and customization of its components.
+
+OpenShift Container Platform utilizes a number of computing resources, known as nodes. A node has a lightweight, secure operating system based on Red Hat Enterprise Linux (RHEL), known as Red Hat Enterprise Linux CoreOS (RHCOS).
 
 After a node is booted and configured, it obtains a container runtime, such as CRI-O or Docker, for managing and running the images of container workloads scheduled to it. The Kubernetes agent, or kubelet schedules container workloads on the node. The kubelet is responsible for registering the node with the cluster and receiving the details of container workloads.
 
 OpenShift Container Platform configures and manages the networking, load balancing and routing of the cluster. OpenShift Container Platform adds cluster services for monitoring the cluster health and performance, logging, and for managing upgrades.
 
-The container image registry and OperatorHub provide Red Hat certified products and community built softwares for providing various application services within the cluster. These applications and services manage the applications deployed in the cluster, databases, frontends and user interfaces, application runtimes and business automation, and developer services for development and testing of container applications.
+The container image registry and OperatorHub provide Red Hat certified products and community-built software for providing various application services within the cluster. These applications and services manage the applications deployed in the cluster, databases, frontends and user interfaces, application runtimes and business automation, and developer services for development and testing of container applications.
 
 You can manage applications within the cluster either manually by configuring deployments of containers running from pre-built images or through resources known as Operators. You can build custom images from pre-build images and source code, and store these custom images locally in an internal, private or public registry.
 
@@ -46,7 +50,7 @@ Administrators can use the web console to manage and monitor applications runnin
 
 [The web console can be customized](https://docs.openshift.com/container-platform/4.12/web_console/configuring-web-console.html) to suit an organization's needs, and when you log into the web console, you will only see the cluster resources that are available to you as allowed by the OpenShift Role Based Access Control (RBAC).
 
-The web console runs as a group of pods on the control plane nodes in the `openshift-console` project, along with a service exposed as a route. Like any other OpenShift applicationm the service is an internal load balancer that directs traffic to one of the OpenShift console pods. The route is what allows external access into the service, and it is the address you connect to when accessing the OpenShift web console.
+The web console runs as a group of pods on the control plane nodes in the `openshift-console` project, along with a service exposed as a route. Like any other OpenShift application the service is an internal load balancer that directs traffic to one of the OpenShift console pods. The route is what allows external access into the service, and it is the address you connect to when accessing the OpenShift web console.
 
 The OpenShift web console is a great example of how OpenShift itself is managed the same way as any other application running on the cluster.
 
@@ -90,7 +94,7 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![cluster-settings.png](/images/cluster-settings.png)
 
-    The cluster settings page is where administrators can see what OpenShift versions are available, and also update the cluster from within the console. OpenShift completely automates the a cluster update once triggered by an administrator, including updating all of the clustser operators and the CoreOS operating system running on the nodes.
+    The cluster settings page is where administrators can see what OpenShift versions are available, and also update the cluster from within the console. OpenShift completely automates the cluster update once triggered by an administrator, including updating all of the cluster operators and the CoreOS operating system running on the nodes.
 
 6. On the Cluster Settings page, select the ClusterOperators tab.
 
@@ -124,7 +128,7 @@ By default, the menu on the left side of the page should be activated and displa
 
     All objects in OpenShift can be generated using YAML files. YAML (standing for Yet Another Markup Language) is a human-readable language for configuration files. Most OpenShift object such as Deployments, Services, Routes, etc. can be modified by directly editing their YAML file in either the console or command line.
 
-    Workloads are typically created by developers, so in the next section, you will swap to the developer perspective to deploy a an application. You will return to the administrator perspective later in this lab.
+    Workloads are typically created by developers, so in the next section, you will swap to the developer perspective to deploy an application. You will return to the administrator perspective later in this lab.
 
 ## The Developer Perspective
 
@@ -204,7 +208,7 @@ The topology page gives you a visual representation of your application where yo
 
 In Kubernetes, a Deployment object defines how an application deploys. In most cases, users use Pod, Service, ReplicaSets, and Deployment resources together. As in the previous section, OpenShift Container Platform creates each of these dependent resources for you, rather than you having to configure each one manually.
 
-When you deployed the `national-parks-frontend` image, a deployment resource was created with only one pod deployed. However, in most cases, users will want to scale their application to have multiple copies running at the same time. This is one of the core features of Kubernetes and OpenShift that build a more highly available application buy creating multiple copies of it across different physical or virtual hosts.
+When you deployed the `national-parks-frontend` image, a deployment resource was created with only one pod deployed. However, in most cases, users will want to scale their application to have multiple copies running at the same time. This is one of the core features of Kubernetes and OpenShift that build a more highly available application by creating multiple copies of it across different physical or virtual hosts.
 
 1. On the details tab for the `parksmap` deployment, click the up arrow next to the blue circle that says `1 pod`. 
 
@@ -222,7 +226,7 @@ Now that you are more familiar with the OpenShift web console, the next section 
 
 ## Introduction to the `oc` CLI
 
-The `oc` CLI is an incredibly powerful tool to manage OpenShift clusters and applictions. It is capable of performing any task you can do in the web console, and some tasks are only possible to do with `oc`.
+The `oc` CLI is an incredibly powerful tool to manage OpenShift clusters and applications. It is capable of performing any task you can do in the web console, and some tasks are only possible to do with `oc`.
 
 `oc` is ideal in situations where you:
 
@@ -234,7 +238,7 @@ Furthermore, many people familiar with Linux and/or Kubernetes tend to find the 
 
 Like with the OpenShift web console, the OpenShift command line includes functions both [for developers](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/developer-cli-commands.html) and for [administrators](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/administrator-cli-commands.html).
 
-For those who are familiar with Kubernetes and its `kubectl` CLI tool, the `oc` tool is essentially analagous but with additional features.
+For those who are familiar with Kubernetes and its `kubectl` CLI tool, the `oc` tool is essentially analogous but with additional features.
 
 ## Logging in with the `oc` CLI
 
