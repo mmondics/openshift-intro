@@ -556,7 +556,7 @@ Once you're ready to clean up your OpenShift project, follow the instructions in
 
 To learn more about OpenShift Container Platform and see the additional tooling it provides to develop and manage more complex applications, please refer to the following links.
 
-[OpenShift 4.12 Documentation](https://docs.openshift.com/container-platform/4.12/welcome/index.html)
-[OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
-[Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
-[OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
+- [OpenShift 4.12 Documentation](https://docs.openshift.com/container-platform/4.12/welcome/index.html)
+- [OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
+- [Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
+- [OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
