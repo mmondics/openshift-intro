@@ -2,6 +2,26 @@
  
 In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM zSystems, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
 
+- [openshift-intro](#openshift-intro)
+  - [Pre-Requisites](#pre-requisites)
+  - [OpenShift Overview](#openshift-overview)
+  - [Overview of the OpenShift Web Console](#overview-of-the-openshift-web-console)
+  - [Connect to the OpenShift Console](#connect-to-the-openshift-console)
+  - [The Administrator Perspective](#the-administrator-perspective)
+  - [The Developer Perspective](#the-developer-perspective)
+  - [Deploying a Container Image](#deploying-a-container-image)
+  - [Examining the Pod](#examining-the-pod)
+  - [Scaling the Frontend Application](#scaling-the-frontend-application)
+  - [Introduction to the `oc` CLI](#introduction-to-the-oc-cli)
+  - [Logging in with the `oc` CLI](#logging-in-with-the-oc-cli)
+  - [Exploring the `oc` CLI](#exploring-the-oc-cli)
+  - [Use `oc` to Deploy a Python Application from Source Code](#use-oc-to-deploy-a-python-application-from-source-code)
+  - [Deploying and Configuring MongoDB](#deploying-and-configuring-mongodb)
+  - [Providing Sensitive Application with Secrets](#providing-sensitive-application-with-secrets)
+  - [Cleanup](#cleanup)
+  - [Conclusion](#conclusion)
+  - [Glossary of Terms](#glossary-of-terms)
+
 ## Pre-Requisites
 1. Access to an OpenShift cluster
 2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/getting-started-cli.html)
@@ -26,15 +46,15 @@ With its foundation in Kubernetes, OpenShift Container Platform incorporates the
 
 **OpenShift Container Platform**, commonly referred to as OCP, is a Kubernetes environment for managing the lifecycle of container-based applications and their dependencies on various computing platforms, such as bare metal, virtualized, on-premises, and in cloud. OpenShift Container Platform deploys, configures and manages containers. OpenShift Container Platform offers usability, stability, and customization of its components.
 
-OpenShift Container Platform utilizes a number of computing resources, known as nodes. A node has a lightweight, secure operating system based on Red Hat Enterprise Linux (RHEL), known as Red Hat Enterprise Linux CoreOS (RHCOS).
+OpenShift Container Platform utilizes a number of computing resources, known as [nodes](#glossary-of-terms). A node has a lightweight, secure operating system based on Red Hat Enterprise Linux (RHEL), known as Red Hat Enterprise Linux CoreOS (RHCOS).
 
-After a node is booted and configured, it obtains a container runtime, such as CRI-O or Docker, for managing and running the images of container workloads scheduled to it. The Kubernetes agent, or kubelet schedules container workloads on the node. The kubelet is responsible for registering the node with the cluster and receiving the details of container workloads.
+After a node is booted and configured, it obtains a container runtime, such as [CRI-O](#glossary-of-terms) or Docker, for managing and running the images of container workloads scheduled to it. The Kubernetes agent, or [kubelet](#glossary-of-terms) schedules container workloads on the node. The kubelet is responsible for registering the node with the cluster and receiving the details of container workloads.
 
 OpenShift Container Platform configures and manages the networking, load balancing and routing of the cluster. OpenShift Container Platform adds cluster services for monitoring the cluster health and performance, logging, and for managing upgrades.
 
-The container image registry and OperatorHub provide Red Hat certified products and community-built software for providing various application services within the cluster. These applications and services manage the applications deployed in the cluster, databases, frontends and user interfaces, application runtimes and business automation, and developer services for development and testing of container applications.
+The container image registry and [OperatorHub](#glossary-of-terms) provide Red Hat certified products and community-built software for providing various application services within the cluster. These applications and services manage the applications deployed in the cluster, databases, frontends and user interfaces, application runtimes and business automation, and developer services for development and testing of container applications.
 
-You can manage applications within the cluster either manually by configuring deployments of containers running from pre-built images or through resources known as Operators. You can build custom images from pre-build images and source code, and store these custom images locally in an internal, private or public registry.
+You can manage applications within the cluster either manually by configuring [deployments](#glossary-of-terms) of containers running from pre-built images or through resources known as [Operators](#glossary-of-terms). You can build custom images from pre-build images and source code, and store these custom images locally in an internal, private or public registry.
 
 ## Overview of the OpenShift Web Console
 
@@ -90,13 +110,13 @@ By default, the menu on the left side of the page should be activated and displa
 
     Your user credentials have the `cluster-reader` roleBinding. This is a read-only roleBinding that allows you to *see* most of what OpenShift has to offer administrators without allowing you to modify cluster objects. For example, typical non-admin users would not be able to complete the following few steps.
 
-5. In the menu at the very bottom, click Administration -> Cluster Settings.
+5. In the menu at the very bottom, **click Administration -> Cluster Settings**.
 
     ![cluster-settings.png](/images/cluster-settings.png)
 
     The cluster settings page is where administrators can see what OpenShift versions are available, and also update the cluster from within the console. OpenShift completely automates the cluster update once triggered by an administrator, including updating all of the cluster operators and the CoreOS operating system running on the nodes.
 
-6. On the Cluster Settings page, select the ClusterOperators tab.
+6. On the Cluster Settings page, **select the ClusterOperators tab**.
 
     ![cluster-settings-clusteroperators.png](/images/cluster-settings-clusteroperators.png)
 
@@ -154,9 +174,9 @@ If you ended up on a page other than Topology, continue with step 1 below anyway
 
 The simplest way to deploy an application in OpenShift Container Platform is to run an existing container image. The following procedure deploys a front end component of an application called `national-parks-app`. The web application displays an interactive map which shows the location of national parks across North America.
 
-13. From the +Add view in the Developer perspective, click Container images.
+13. From the +Add view in the Developer perspective, **click Container images**.
 
-14. Enter the following values:
+14. **Enter the following values**:
 
     - Image name from external registry: `quay.io/mmondics/national-parks-frontend:latest`
     - Application name: `national-parks-app`
@@ -172,7 +192,7 @@ The simplest way to deploy an application in OpenShift Container Platform is to 
 
     Note: you can hit the `enter` or `tab` key to enter each individual label.
 
-15. Click Create.
+15. **Click Create**.
 
     You are redirected to the Topology page where you will shortly see the `parksmap` deployment in the `national-parks-app` application.
 
@@ -182,23 +202,23 @@ The simplest way to deploy an application in OpenShift Container Platform is to 
 
 The topology page gives you a visual representation of your application where you can view and monitor its components.
 
-16. Click the circular icon for your `parksmap` deployment.
+16. **Click the circular icon for your `parksmap` deployment**.
 
     This brings up a window on the right side of the screen with more options for the deployment.
     
-17. Click the details tab, if not already on it. 
+17. **Click the details tab, if not already on it**. 
  
     ![topology-2](images/topology-2.png)
 
    Here you can manage its properties including number of copies, labels, or storage.
 
-18. Click the Resources tab. 
+18. **Click the Resources tab**. 
 
     ![topology-3](images/topology-3.png)
 
     Here you can access the pod or its logs as well as the route where the application is accessible.
 
-19. Click the Actions dropdown menu.
+19. **Click the Actions dropdown menu**.
 
     ![topology-4](images/topology-4.png)
 
@@ -210,7 +230,7 @@ In Kubernetes, a Deployment object defines how an application deploys. In most c
 
 When you deployed the `national-parks-frontend` image, a deployment resource was created with only one pod deployed. However, in most cases, users will want to scale their application to have multiple copies running at the same time. This is one of the core features of Kubernetes and OpenShift that build a more highly available application by creating multiple copies of it across different physical or virtual hosts.
 
-20. On the details tab for the `parksmap` deployment, click the up arrow next to the blue circle that says `1 pod`. 
+20. On the details tab for the `parksmap` deployment, **click the up arrow next to the blue circle that says `1 pod`**. 
 
     ![scaling-up.png](/images/scaling-up.png)
 
@@ -244,13 +264,13 @@ For those who are familiar with Kubernetes and its `kubectl` CLI tool, the `oc` 
 
 The frontend application, `parksmap`, needs a backend. In this section, you will deploy a python application named `nationalparks`. This application performs 2D geo-spatial queries against a MongoDB database to locate and return map coordinates of all national parks in North America.
 
-21. From the OpenShift web console, click your username in the top right corner (i.e. `Workshop User NN`) and select `Copy login command`.
+21. From the OpenShift web console, **click your username in the top right corner** (i.e. `Workshop User NN`) and select `Copy login command`.
 
     ![copy-login-command](images/copy-login-command.png)
 
-22. Log in with your OpenShift credentials and click the Display Token hyperlink.
+22. **Log in with your OpenShift credentials and click the Display Token hyperlink**.
 
-23. Copy the line that begins with `oc login`, paste it into a terminal session, and execute the command.
+23. **Copy the line that begins with `oc login`, paste it into a terminal session, and execute the command**.
 
     Sample output: 
 
@@ -269,7 +289,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 ## Exploring the `oc` CLI
 
-24. In your terminal, test out the `oc` CLI.
+24. **In your terminal, test out the `oc` CLI**.
 
     ```text
     oc --help
@@ -358,7 +378,7 @@ The set of objects created by `oc new-app` depends on the artifacts passed as an
 
 The frontend application, `parksmap`, needs a backend. In this section, you will deploy a python application named `nationalparks`. This application performs 2D geo-spatial queries against a MongoDB database to locate and return map coordinates of all national parks in North America.
 
-26. Deploy the python backend with the following `oc new-app` command.
+26. **Deploy the python backend with the following `oc new-app` command**.
 
     ```text
     oc new-app python~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
@@ -404,7 +424,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     The buildconfig is the configuration file that will be used to build the `nationalparks` container image. This build will automatically begin, and you can check its logs to watch the process. 
 
-27. Check the `nationalparks` build log.
+27. **Check the `nationalparks` build log**.
    
     ```text
     oc logs build/nationalparks-1
@@ -412,7 +432,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     Once you see `Push successful` at the end of the build logs, your new container image has been built and pushed into OpenShift's internal registry. It will then automatically be deployed in a pod.
 
-28. Check that the `nationalparks` pod is running and ready.
+28. **Check that the `nationalparks` pod is running and ready**.
 
     ```text
     oc get pods
@@ -430,13 +450,13 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     Once the `nationalparks` pod is `Running` and has `1/1` containers ready, the application is successfully deployed. However, the backend python application is only accessible from within the OCP cluster. It is exposed to the outside world, as you may have noticed from the output of the `oc new-app` command: `Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:`
 
-29. Create a route that exposes the `nationalparks` service.
+29. **Create a route that exposes the `nationalparks` service**.
 
     ```text
     oc expose service/nationalparks
     ```
 
-30. See the new route that was created.
+30. **See the new route that was created**.
 
     ```text
     oc get route
@@ -451,13 +471,13 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     parksmap        parksmap-user01-project.apps.example.com               parksmap        8080-tcp   edge/Redirect   None
     ```
 
-31. Label the `nationalparks` route as the application backend.
+31. **Label the `nationalparks` route as the application backend**.
 
     ```text
     oc label route nationalparks type=parksmap-backend
     ```
 
-32. Navigate to the frontend `parksmap` route in a web browser. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
+32. **Navigate to the frontend `parksmap` route in a web browser**. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
 
     e.g. <http://parksmap-userNN-project.apps.example.com>
 
@@ -475,7 +495,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 The MongoDB you will deploy in this section will store all information about the National Parks, their names and coordinates.
 
-33. Deploy the MongoDB container.
+33. **Deploy the MongoDB container**.
 
     ```text
     oc new-app quay.io/mmondics/mongodb:latest --name mongodb-nationalparks -e MONGODB_USER=mongodb -e MONGODB_PASSWORD=mongodb -e MONGODB_DATABASE=mongodb -e MONGODB_ADMIN_PASSWORD=mongodb -l 'app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=mongodb'
@@ -504,13 +524,13 @@ The MongoDB you will deploy in this section will store all information about the
 
 The *Secret* object provides a mechanism to hold sensitive information such as passwords, OpenShift Container Platform client configuration files, private source repository credentials, and so on. Secrets decouple sensitive content from the pods. You can mount secrets into containers using a volume plugin or the system can use secrets to perform actions on behalf of a pod. The following procedure adds the secret `nationalparks-mongodb-parameters` and mounts it to the `nationalparks` workload.
 
-34. Create a secret holding sensitive information (usernames and passwords).
+34. **Create a secret holding sensitive information** (usernames and passwords).
 
     ```text
     oc create secret generic nationalparks-mongodb-parameters --from-literal=DATABASE_SERVICE_NAME=mongodb-nationalparks --from-literal=MONGODB_USER=mongodb --from-literal=MONGODB_PASSWORD=mongodb --from-literal=MONGODB_DATABASE=mongodb --from-literal=MONGODB_ADMIN_PASSWORD=mongodb
     ```
 
-35. Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalpartks` workload.
+35. **Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalpartks` workload**.
 
     ```text
     oc set env --from=secret/nationalparks-mongodb-parameters deploy/nationalparks
@@ -518,7 +538,7 @@ The *Secret* object provides a mechanism to hold sensitive information such as p
 
     The `nationalparks` deployment will notice that a change has been made, and it will create a new pod with these changes applied. Check with `oc get pods` until the new pod is up and running.
 
-36. Once the `mongodb-nationalparks` pod is running and ready, run the following command to load National Park data into MongoDB.
+36. Once the `mongodb-nationalparks` pod is running and ready, **run the following command to load National Park data into MongoDB**.
 
     **Make sure that you are in your own project before running the command.**
 
@@ -528,7 +548,7 @@ The *Secret* object provides a mechanism to hold sensitive information such as p
 
     If you see `"Items inserted in database: 226"`, the data was successfully loaded.
 
-37. Finally, return to your frontend `parksmap` application in a web browser.
+37. Finally, **return to your frontend `parksmap` application in a web browser**.
 
     ![parksmap-loaded](images/parksmap-loaded.png)
 
@@ -538,7 +558,7 @@ This interactive map is the culmination of all the Kubernetes and OpenShift obje
 
 Once you're ready to clean up your OpenShift project, follow the instructions in this section.
 
-38. Run the following command to clean up most of the objects in your project. Remember to change the value of `NN`.
+38. **Run the following command to clean up most of the objects in your project**. Remember to change the value of `NN`.
 
     ```text
     oc delete all --all -n userNN-project
@@ -546,7 +566,7 @@ Once you're ready to clean up your OpenShift project, follow the instructions in
 
     This will delete some of the objects in your project, but it will not delete the secret you created.
 
-39. Delete your secret with the following command.
+39. **Delete your secret with the following command**.
 
     ```text
     oc delete secret nationalparks-mongodb-parameters -n userNN-project
@@ -560,3 +580,17 @@ To learn more about OpenShift Container Platform and see the additional tooling 
 - [OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
 - [Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
 - [OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
+
+## Glossary of Terms
+
+| Term                             | Definition                                                                                                                                                                                                                                             |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Deployment                       | A Kubernetes resource object that maintains the life cycle of an application.                                                                                                                                                                          |
+| Containers                       | Lightweight and executable images that consist software and all its dependencies. Because containers virtualize the operating system, you can run containers anywhere, from a data center to a public or private cloud to your local host.             |
+| Node                             | A worker machine in the OpenShift Container Platform cluster. A node is either a virtual machine (VM) or a physical machine.                                                                                                                           |
+| Operator                         | The preferred method of packaging, deploying, and managing a Kubernetes application in an OpenShift Container Platform cluster. An Operator takes human operational knowledge and encodes it into software that is packaged and shared with customers. |
+| OperatorHub                      | A platform that contains various OpenShift Container Platform Operators to install.                                                                                                                                                                    |
+| Pod                              | One or more containers with shared resources, such as volume and IP addresses, running in your OpenShift Container Platform cluster. A pod is the smallest compute unit defined, deployed, and managed.                                                |
+| Role-Based Access Control (RBAC) | A key security control to ensure that cluster users and workloads have only access to resources required to execute their roles.                                                                                                                       |
+| Route                            | Routes expose a service to allow for network access to pods from users and applications outside the OpenShift Container Platform instance.                                                                                                             |
+| Service                          | A service exposes a running application on a set of pods.                                                                                                                                                                                              |
