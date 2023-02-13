@@ -532,3 +532,31 @@ The *Secret* object provides a mechanism to hold sensitive information such as p
 
     ![parksmap-loaded](images/parksmap-loaded.png)
 
+This interactive map is the culmination of all the Kubernetes and OpenShift objects that you created throughout the course of this tutorial. You can click on each icon on the map to see more details about each National Park.
+
+## Cleanup
+
+Once you're ready to clean up your OpenShift project, follow the instructions in this section.
+
+38. Run the following command to clean up most of the objects in your project. Remember to change the value of `NN`.
+
+    ```text
+    oc delete all --all -n userNN-project
+    ```
+
+    This will delete some of the objects in your project, but it will not delete the secret you created.
+
+39. Delete your secret with the following command.
+
+    ```text
+    oc delete secret nationalparks-mongodb-parameters -n userNN-project
+    ```
+
+## Conclusion
+
+To learn more about OpenShift Container Platform and see the additional tooling it provides to develop and manage more complex applications, please refer to the following links.
+
+[OpenShift 4.12 Documentation](https://docs.openshift.com/container-platform/4.12/welcome/index.html)
+[OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
+[Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
+[OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
