@@ -2,9 +2,18 @@ Virtual Machines: <https://techzone.ibm.com/my/workshops/student/63efd5f391074d0
 
 Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
 
-OpenShift credentials:
+## Connecting to OpenShift via the CLI
+To access OpenShift via the CLI, you must first `ssh` to one of our WSC Linux guests from the RHEL Virtual Machine.
 
-| Name                 | NN | OpenShift Username | OpenShift Password |
+```text
+ssh userNN@192.168.176.61
+```
+
+Then paste your `oc login` command.
+
+## OpenShift AND Linux guest credentials:
+
+| Name                 | NN | Username | Password |
 |----------------------|----|--------------------|--------------------|
 | Anze Stojilkovic     | 01 | user01             | p@ssw0rd           |
 | Bruce H Gilkes       | 02 | user02             | p@ssw0rd           |
