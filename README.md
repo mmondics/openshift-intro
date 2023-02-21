@@ -2,7 +2,10 @@
  
 In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM zSystems, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
 
+## Table of Contents
+
 - [openshift-intro](#openshift-intro)
+  - [Table of Contents](#table-of-contents)
   - [Pre-Requisites](#pre-requisites)
   - [OpenShift Overview](#openshift-overview)
   - [Overview of the OpenShift Web Console](#overview-of-the-openshift-web-console)
@@ -31,14 +34,7 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 
 ![ocp](images/ocp.png)
 
-[OpenShift Container Platform](https://www.redhat.com/en/technologies/cloud-computing/openshift/container-platform) is a cloud-based Kubernetes container platform. The foundation of OpenShift Container Platform is based on Kubernetes and therefore shares the same technology. It is designed to allow applications and the data centers that support them to expand from just a few machines and applications to thousands of machines that serve millions of clients.
-
-OpenShift Container Platform enables you to do the following:
-
-- Provide developers and IT organizations with cloud application platforms that can be used for deploying applications on secure and scalable resources.
-- Require minimal configuration and management overhead.
-- Bring the Kubernetes platform to customer data centers and cloud.
-- Meet security, privacy, compliance, and governance requirements.
+[OpenShift Container Platform](https://www.redhat.com/en/technologies/cloud-computing/openshift/container-platform) is an enterprise-grade container platform based on [Kubernetes](https://kubernetes.io/). OpenShift is designed to allow applications and the data centers that support them to expand from just a few machines and applications to thousands of machines that serve millions of clients.
 
 With its foundation in Kubernetes, OpenShift Container Platform incorporates the same technology that serves as the engine for massive telecommunications, streaming video, gaming, banking, and other applications. Its implementation in open Red Hat technologies lets you extend your containerized applications beyond a single cloud to on-premises and multi-cloud environments.
 
