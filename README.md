@@ -266,6 +266,8 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 22. **Log in with your OpenShift credentials and click the Display Token hyperlink**.
 
+NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the RHEL virtual machine terminal, the command will time out.
+
 23. **Copy the line that begins with `oc login`, paste it into a terminal session, and execute the command**.
 
     Sample output: 
