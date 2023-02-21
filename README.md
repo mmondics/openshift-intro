@@ -80,7 +80,7 @@ The OpenShift web console is a great example of how OpenShift itself is managed 
 
 2. In the browser, **navigate to your OpenShift console.** 
 
-    The OpenShift console typically begins with `https://console-openshift-console-`. Reach out to your OpenShift administrator if you do not have this address
+    The OpenShift console typically begins with `https://console-openshift-console-`. Reach out to your OpenShift administrator if you do not have this address.
 
     You will now see the OpenShift console login page.
 
@@ -456,6 +456,16 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     oc expose service/nationalparks
     ```
 
+    It's worth understanding a little bit about what you just did. The backend application `nationalparks` runs in one pod. However, you could easily scale the number of pods running `nationalparks` up as much as you'd like, or you can let OpenShift automatically scale out the number of pods (based on CPU or memory consumption) with a [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). Each pod will be assigned its own individual IP address, and furthermore, if and when the pods regenerate, they will get brand new IP addresses. For these reasons, you cannot rely on the application's IP address in order to use it, like you would with many non-containerized applications. 
+
+    To solve this problem, Kubernetes uses *services*. [Services](https://kubernetes.io/docs/concepts/services-networking/service/) are load balancers internal to the cluster that distribute requests among the application pods using label matching. If you want to access an application, you need to access the service that will then direct the request to one of the pods.
+
+    However, services are **internal** to the cluster. They allow pods to communicate with other pods inside the cluster, but not with the outside world. For external access, we need to introduce another object - **routes**. 
+
+    [Routes](https://docs.openshift.com/container-platform/4.12/rest_api/network_apis/route-route-openshift-io-v1.html) are OpenShift objects - they do not exist in upstream Kubernetes. Routes *expose* servies as publicly-accessible addresses for users and applications to interact with. When you access an OpenShift appliction in a web browser, such as the `parksmap` webpage or even the OpenShift console, you navigate to that pod's route.
+
+    ![routes](images/routes.png)
+
 30. **See the new route that was created**.
 
     ```text
@@ -522,7 +532,9 @@ The MongoDB you will deploy in this section will store all information about the
 
 ## Providing Sensitive Application with Secrets
 
-The *Secret* object provides a mechanism to hold sensitive information such as passwords, OpenShift Container Platform client configuration files, private source repository credentials, and so on. Secrets decouple sensitive content from the pods. You can mount secrets into containers using a volume plugin or the system can use secrets to perform actions on behalf of a pod. The following procedure adds the secret `nationalparks-mongodb-parameters` and mounts it to the `nationalparks` workload.
+The *Secret* object provides a mechanism to hold sensitive information such as passwords, OpenShift Container Platform client configuration files, private source repository credentials, and so on. Secrets decouple sensitive content from the pods. You can mount secrets into containers using a volume plugin or the system can use secrets to perform actions on behalf of a pod. By default, secrets are stored *unencrypted* in etcd. Therefore secrets are securable by default, not secured. To safely secure secrets, you must turn on etcd encryption as well as configure proper role-based access controls to the secret objects and etcd. Read more about secrets [here](https://kubernetes.io/docs/concepts/configuration/secret/).
+
+The following procedure adds the secret `nationalparks-mongodb-parameters` and mounts it to the `nationalparks` workload.
 
 34. **Create a secret holding sensitive information** (usernames and passwords).
 
