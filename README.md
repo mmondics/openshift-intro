@@ -590,6 +590,7 @@ To learn more about OpenShift Container Platform and see the additional tooling 
 - [OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
 - [Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
 - [OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
+- [OpenShift on IBM zSystems Datasheet](https://www.redhat.com/en/resources/openshift-ibm-z-linuxone-datasheet)
 
 ## Glossary of Terms
 
