@@ -134,11 +134,31 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![empty-openshift-project.png](/images/empty-openshift-project.png)
 
-9.  **Look through the Overview tab of your project**.
+    OpenShift automatically creates a few special service accounts in every project. The `default` service account takes responsibility for running the pods. OpenShift uses and injects this service account into every pod that launches.
+
+    The following step creates a **RoleBinding** object for the `default` ServiceAccount object. The service account communicates with the OpenShift Container Platform API to learn about pods, services, and resources within the project.
+
+9. **Click the RoleBindings tab of your project, and then click Create Binding.**
+
+    ![create-binding.png](/images/create-binding.png)
+
+10. **Fill out the form as follows.**
+
+    Name: `sa-user-account`
+    Role Name: `view`
+    Subject: `ServiceAccount`
+    Subject namespace: `userNN-project` where `NN` is your user number
+    Subject Name: `default`
+
+    ![create-binding-2.png](/images/create-binding-2.png)
+
+    **Then click create.**
+
+11. **Look through the Overview tab of your project**.
 
     This displays information about what’s going on in your project, such as CPU and memory usage, any alerts or crashlooping pods, an inventory of all the Kubernetes resources deployed in the project, and more. You won’t see much information yet, as no workloads should be running in this project.
 
-10. **Click the Workloads tab** to the right of YAML.
+12. **Click the Workloads tab** to the right of YAML.
 
     This page displays all of the workloads in your project, so it’s empty for now.
 
