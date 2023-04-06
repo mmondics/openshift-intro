@@ -189,7 +189,7 @@ By default, the menu on the left side of the page should be activated and displa
 
     **Then click create.**
 
-11. **Look through the Overview tab of your project**.
+11. ** Navigate back to your project and look through the Overview tab of your project**.
 
     This displays information about what’s going on in your project, such as CPU and memory usage, any alerts or crashlooping pods, an inventory of all the Kubernetes resources deployed in the project, and more. You won’t see much information yet, as no workloads should be running in this project.
 
@@ -444,7 +444,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     Sample Output:
 
     ```text
-    ➜  ~ oc new-app python~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
+    ➜  ~ oc new-app python~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l "app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python"
     warning: Cannot check if git requires authentication.
     --> Found image ad4c417 (2 weeks old) in image stream "openshift/python" under tag "3.9-ubi8" for "python"
 
@@ -559,7 +559,7 @@ The MongoDB you will deploy in this section will store all information about the
 33. **Deploy the MongoDB container**.
 
     ```text
-    oc new-app quay.io/mmondics/mongodb:latest --name mongodb-nationalparks -e MONGODB_USER=mongodb -e MONGODB_PASSWORD=mongodb -e MONGODB_DATABASE=mongodb -e MONGODB_ADMIN_PASSWORD=mongodb -l 'app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=mongodb'
+    oc new-app quay.io/mmondics/mongodb:latest --name mongodb-nationalparks -e MONGODB_USER=mongodb -e MONGODB_PASSWORD=mongodb -e MONGODB_DATABASE=mongodb -e MONGODB_ADMIN_PASSWORD=mongodb -l "app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=mongodb"
     ```
 
     A few things to notice about this command:
