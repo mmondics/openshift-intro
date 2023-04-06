@@ -179,11 +179,11 @@ By default, the menu on the left side of the page should be activated and displa
 
 10. **Fill out the form as follows.**
 
-    Name: `sa-user-account`
-    Role Name: `view`
-    Subject: `ServiceAccount`
-    Subject namespace: `zcxwsNN-project` where `NN` is your user number
-    Subject Name: `default`
+    - Name: `sa-user-account`
+    - Role Name: `view`
+    - Subject: `ServiceAccount`
+    - Subject namespace: `zcxwsNN-project` where `NN` is your user number
+    - Subject Name: `default`
 
     ![create-binding-2.png](/images/create-binding-2.png)
 
