@@ -32,7 +32,7 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 ## Pre-Requisites
 1. Access to an OpenShift cluster
 2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/getting-started-cli.html)
-3. Projects created for each user with the names `userNN-project` (`NN` being each user number). Administrators can create this ahead of time with any limitations or quotas they wish, or administrators can allow users to create their own projects.
+3. Projects created for each user with the names `zcxwsNN-project` (`NN` being each user number). Administrators can create this ahead of time with any limitations or quotas they wish, or administrators can allow users to create their own projects.
 
 ## OpenShift Overview
 
@@ -120,17 +120,17 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![cluster-settings-clusteroperators.png](/images/cluster-settings-clusteroperators.png)
 
-    Each clusterOperator is responsible for managing resources related to a specific OpenShift function. For example, the `authentication` clusterOperator manages all of the resources (pods, routes, secrets, etc.) related to the LDAP authentication you are using to log in with the `userNN` username.
+    Each clusterOperator is responsible for managing resources related to a specific OpenShift function. For example, the `authentication` clusterOperator manages all of the resources (pods, routes, secrets, etc.) related to the LDAP authentication you are using to log in with the `zcxwsNN` username.
 
 7. In the Menu, **click Home -> Projects.**
 
     ![home-projects.png](/images/home-projects.png)
 
-    The rest of the page is populated by projects. A project has been created for you to work in named `userNN-project` (where NN is your user number). If your OpenShift administrator did not create this project for you, you should be able to do so yourself with the `Create Project` button in the top right of the projects page.
+    The rest of the page is populated by projects. A project has been created for you to work in named `zcxwsNN-project` (where NN is your user number). If your OpenShift administrator did not create this project for you, you should be able to do so yourself with the `Create Project` button in the top right of the projects page.
 
     Any project starting with `openshift-` or `kube-` contain the workloads running the OpenShift platform itself.
 
-8. **Click the userNN-project hyperlink** (where NN is your user number).
+8. **Click the zcxwsNN-project hyperlink** (where NN is your user number).
 
     Tip: With so many Projects displayed, you can use the search bar to find yours more easily.
 
@@ -151,7 +151,7 @@ By default, the menu on the left side of the page should be activated and displa
     Name: `sa-user-account`
     Role Name: `view`
     Subject: `ServiceAccount`
-    Subject namespace: `userNN-project` where `NN` is your user number
+    Subject namespace: `zcxwsNN-project` where `NN` is your user number
     Subject Name: `default`
 
     ![create-binding-2.png](/images/create-binding-2.png)
@@ -305,7 +305,7 @@ NOTE for those in the WSC hands-on lab session, you must complete the following 
 
     You are now logged into the cluster via the `oc` CLI, and you are told which project you are using.
 
-    If you’re in a project other than your own `userNN-project`, use the following command to move into it: `oc project userNN-project`, where `NN` is your user number.
+    If you’re in a project other than your own `zcxwsNN-project`, use the following command to move into it: `oc project zcxwsNN-project`, where `NN` is your user number.
 
 ## Exploring the `oc` CLI
 
@@ -509,7 +509,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 32. **Navigate to the frontend `parksmap` route in a web browser**. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
 
-    e.g. <http://parksmap-userNN-project.apps.example.com>
+    e.g. <http://parksmap-zcxwsNN-project.apps.example.com>
 
     Alternatively, you can click the small arrow button associated with the `parksmap` deployment in the OpenShift web console topology.
 
@@ -644,7 +644,7 @@ OpenShift provides a web interface to *Prometheus*, which enables you to run Pro
 
     Your table will look different depending on what work is being done in the OpenShift cluster at the time.
     
-    Notice that you have *observability* of the entire OpenShift cluster, even though you cannot access or edit projects other than your own. In other words, you have read-only access to the full OpenShift cluster via the Observability stack, but you read-write access within your userNN-project.
+    Notice that you have *observability* of the entire OpenShift cluster, even though you cannot access or edit projects other than your own. In other words, you have read-only access to the full OpenShift cluster via the Observability stack, but you read-write access within your zcxwsNN-project.
 
     OpenShift passes around a massive amount of data to run itself and the applications running on top of it. Prometheus is an extremely powerful data source that can return results for millions of time strings with extremely granular precision.
 
@@ -653,7 +653,7 @@ OpenShift provides a web interface to *Prometheus*, which enables you to run Pro
 5. **Modify your query to the following**:
 
     ```text
-    namespace:container_memory_usage_bytes:sum{namespace="userNN-project"}
+    namespace:container_memory_usage_bytes:sum{namespace="zcxwsNN-project"}
     ```
 
     Make sure you change the one instance of `NN` to your user number.
@@ -746,7 +746,7 @@ Once you're ready to clean up your OpenShift project, follow the instructions in
 38. **Run the following command to clean up most of the objects in your project**. Remember to change the value of `NN`.
 
     ```text
-    oc delete all --all -n userNN-project
+    oc delete all --all -n zcxwsNN-project
     ```
 
     This will delete some of the objects in your project, but it will not delete the secret you created.
@@ -754,7 +754,7 @@ Once you're ready to clean up your OpenShift project, follow the instructions in
 39. **Delete your secret with the following command**.
 
     ```text
-    oc delete secret nationalparks-mongodb-parameters -n userNN-project
+    oc delete secret nationalparks-mongodb-parameters -n zcxwsNN-project
     ```
 
 ## Conclusion
