@@ -593,7 +593,7 @@ The following procedure adds the secret `nationalparks-mongodb-parameters` and m
     oc create secret generic nationalparks-mongodb-parameters --from-literal=DATABASE_SERVICE_NAME=mongodb-nationalparks --from-literal=MONGODB_USER=mongodb --from-literal=MONGODB_PASSWORD=mongodb --from-literal=MONGODB_DATABASE=mongodb --from-literal=MONGODB_ADMIN_PASSWORD=mongodb
     ```
 
-35. **Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalpartks` workload**.
+35. **Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalparks` workload**.
 
     ```text
     oc set env --from=secret/nationalparks-mongodb-parameters deploy/nationalparks
@@ -601,13 +601,9 @@ The following procedure adds the secret `nationalparks-mongodb-parameters` and m
 
     The `nationalparks` deployment will notice that a change has been made, and it will create a new pod with these changes applied. Check with `oc get pods` until the new pod is up and running.
 
-36. Once the `mongodb-nationalparks` pod is running and ready, **run the following command to load National Park data into MongoDB**.
+36. Once the `mongodb-nationalparks` pod is running and ready, **navigate to the `/ws/data/load` endpoint for your `nationalparks` route to load the database**.
 
-    **Make sure that you are in your own project before running the command.**
-
-    ```text
-    oc exec $(oc get pods -l component=nationalparks | tail -n 1 | awk '{print $1;}') -- curl -s http://localhost:8080/ws/data/load
-    ```
+    e.g. <https://nationalparks-zcxwsNN-project.apps.ocpzdev.pbm.ihost.com/ws/data/load> where `NN` is your user number.
 
     If you see `"Items inserted in database: 226"`, the data was successfully loaded.
 
