@@ -189,7 +189,7 @@ By default, the menu on the left side of the page should be activated and displa
 
     **Then click create.**
 
-11. ** Navigate back to your project and look through the Overview tab of your project**.
+11. **Navigate back to your project and look through the Overview tab of your project**.
 
     This displays information about what’s going on in your project, such as CPU and memory usage, any alerts or crashlooping pods, an inventory of all the Kubernetes resources deployed in the project, and more. You won’t see much information yet, as no workloads should be running in this project.
 
