@@ -1,10 +1,41 @@
+
 # openshift-intro
  
 In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM zSystems, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
 
+## Connection Instructions
+
+**Perform all steps in this lab (both in the web console and the command line) inside the Apache Guacamole Virtual Machine. Your local workstation will fail to connect to the cluster.**
+
+OpenShift cluster URL: <https://console-openshift-console.apps.ocpzdev.pbm.ihost.com/dashboards>
+
+| Name | NN | Username | Password  |
+|-----|----|-----------|-----------|
+| TBD | 01 | `zcxws01` | `zcxws01` |
+| TBD | 02 | `zcxws02` | `zcxws02` |
+| TBD | 03 | `zcxws03` | `zcxws03` |
+| TBD | 04 | `zcxws04` | `zcxws04` |
+| TBD | 05 | `zcxws05` | `zcxws05` |
+| TBD | 06 | `zcxws06` | `zcxws06` |
+| TBD | 07 | `zcxws07` | `zcxws07` |
+| TBD | 08 | `zcxws08` | `zcxws08` |
+| TBD | 09 | `zcxws09` | `zcxws91` |
+| TBD | 10 | `zcxws10` | `zcxws10` |
+| TBD | 11 | `zcxws11` | `zcxws11` |
+| TBD | 12 | `zcxws12` | `zcxws12` |
+| TBD | 13 | `zcxws13` | `zcxws13` |
+| TBD | 14 | `zcxws14` | `zcxws14` |
+| TBD | 15 | `zcxws15` | `zcxws15` |
+| TBD | 16 | `zcxws16` | `zcxws16` |
+| TBD | 17 | `zcxws17` | `zcxws17` |
+| TBD | 18 | `zcxws18` | `zcxws18` |
+| TBD | 19 | `zcxws19` | `zcxws19` |
+| TBD | 20 | `zcxws20` | `zcxws20` |
+
 ## Table of Contents
 
 - [openshift-intro](#openshift-intro)
+  - [Connection Instructions](#connection-instructions)
   - [Table of Contents](#table-of-contents)
   - [Pre-Requisites](#pre-requisites)
   - [OpenShift Overview](#openshift-overview)
