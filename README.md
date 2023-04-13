@@ -9,28 +9,28 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 
 OpenShift cluster URL: <https://console-openshift-console.apps.ocpzdev.pbm.ihost.com/dashboards>
 
-| Name | NN | Username | Password  |
-|-----|----|-----------|-----------|
-| TBD | 01 | `zcxws01` | `zcxws01` |
-| TBD | 02 | `zcxws02` | `zcxws02` |
-| TBD | 03 | `zcxws03` | `zcxws03` |
-| TBD | 04 | `zcxws04` | `zcxws04` |
-| TBD | 05 | `zcxws05` | `zcxws05` |
-| TBD | 06 | `zcxws06` | `zcxws06` |
-| TBD | 07 | `zcxws07` | `zcxws07` |
-| TBD | 08 | `zcxws08` | `zcxws08` |
-| TBD | 09 | `zcxws09` | `zcxws91` |
-| TBD | 10 | `zcxws10` | `zcxws10` |
-| TBD | 11 | `zcxws11` | `zcxws11` |
-| TBD | 12 | `zcxws12` | `zcxws12` |
-| TBD | 13 | `zcxws13` | `zcxws13` |
-| TBD | 14 | `zcxws14` | `zcxws14` |
-| TBD | 15 | `zcxws15` | `zcxws15` |
-| TBD | 16 | `zcxws16` | `zcxws16` |
-| TBD | 17 | `zcxws17` | `zcxws17` |
-| TBD | 18 | `zcxws18` | `zcxws18` |
-| TBD | 19 | `zcxws19` | `zcxws19` |
-| TBD | 20 | `zcxws20` | `zcxws20` |
+| Name                                    | NN | OCP Username | OCP Password |
+|-----------------------------------------|----|--------------|--------------|
+|     Adriel Gomes Borges                 | 01 | zcxws01      | zcxws01      |
+|     Alexandre Perissinotto do Amaral    | 02 | zcxws02      | zcxws02      |
+|     Anderson C. Mattos                  | 03 | zcxws03      | zcxws03      |
+|     Andre Cintas Donizette              | 04 | zcxws04      | zcxws04      |
+|     Andre Henrique Valle                | 05 | zcxws05      | zcxws05      |
+|     Andre Paulli Rondello               | 06 | zcxws06      | zcxws06      |
+|     David Guimaraes Chu                 | 07 | zcxws07      | zcxws07      |
+|     Elaine I. Nishikawa                 | 08 | zcxws08      | zcxws08      |
+|     Esdras Almeida Freitas              | 09 | zcxws09      | zcxws91      |
+|     Fabio Rodriguez Lopes               | 10 | zcxws10      | zcxws10      |
+|     Felipe Castro Geraldo               | 11 | zcxws11      | zcxws11      |
+|     Flavio Yukio Nagai                  | 12 | zcxws12      | zcxws12      |
+|     Gilberto Dos Santos Menezes         | 13 | zcxws13      | zcxws13      |
+|     Guilherme Andre Garcia Bueno        | 14 | zcxws14      | zcxws14      |
+|     Jose Roberto Montanhez Junior       | 15 | zcxws15      | zcxws15      |
+|     Leonardo P. Gatti                   | 16 | zcxws16      | zcxws16      |
+|     Leonilson Sousa Alencar Fil         | 17 | zcxws17      | zcxws17      |
+|     Matheus Oliveira Cezarani           | 18 | zcxws18      | zcxws18      |
+|     Paola Silva Goncalves               | 19 | zcxws19      | zcxws19      |
+|     Thiago Augusto Duarte               | 20 | zcxws20      | zcxws20      |
 
 ## Table of Contents
 
