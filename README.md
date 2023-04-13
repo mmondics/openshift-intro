@@ -19,7 +19,7 @@ OpenShift cluster URL: <https://console-openshift-console.apps.ocpzdev.pbm.ihost
 |     Andre Paulli Rondello               | 06 | zcxws06      | zcxws06      |
 |     David Guimaraes Chu                 | 07 | zcxws07      | zcxws07      |
 |     Elaine I. Nishikawa                 | 08 | zcxws08      | zcxws08      |
-|     Esdras Almeida Freitas              | 09 | zcxws09      | zcxws91      |
+|     Esdras Almeida Freitas              | 09 | zcxws09      | zcxws09      |
 |     Fabio Rodriguez Lopes               | 10 | zcxws10      | zcxws10      |
 |     Felipe Castro Geraldo               | 11 | zcxws11      | zcxws11      |
 |     Flavio Yukio Nagai                  | 12 | zcxws12      | zcxws12      |
