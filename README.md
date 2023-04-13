@@ -9,6 +9,10 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 
 OpenShift cluster URL: <https://console-openshift-console.apps.ocpzdev.pbm.ihost.com/dashboards>
 
+Select the LDAP login option, **NOT** kubeadmin.
+
+![ldap](images/ldap.png)
+
 | Name                                    | NN | OCP Username | OCP Password |
 |-----------------------------------------|----|--------------|--------------|
 |     Adriel Gomes Borges                 | 01 | zcxws01      | zcxws01      |
