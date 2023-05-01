@@ -7,6 +7,10 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 - [openshift-intro](#openshift-intro)
   - [Table of Contents](#table-of-contents)
   - [Pre-Requisites](#pre-requisites)
+- [Accessing the Environment](#accessing-the-environment)
+  - [Accessing OpenShift](#accessing-openshift)
+  - [Links to platforms](#links-to-platforms)
+  - [OpenShift credentials](#openshift-credentials)
   - [OpenShift Overview](#openshift-overview)
   - [Overview of the OpenShift Web Console](#overview-of-the-openshift-web-console)
   - [Connect to the OpenShift Console](#connect-to-the-openshift-console)
@@ -33,6 +37,65 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 1. Access to an OpenShift cluster
 2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/getting-started-cli.html)
 3. Projects created for each user with the names `userNN-project` (`NN` being each user number). Administrators can create this ahead of time with any limitations or quotas they wish, or administrators can allow users to create their own projects.
+
+# Accessing the Environment
+<!---The virtual machines seem to work best in a Firefox browser on your local workstation. Running the VMs in Chrome will sometimes result in an issue where your mouse pointer is not visible.
+
+## Accessing your Virtual Machine
+1. Go here: <https://techzone.ibm.com/my/workshops/student/63fcce8ab8e43200194a2201>
+2. Log in with your IBM ID and enter the workshop password: `p@ssw0rd` (that's a zero)
+3. Log into the RHEL virtual machine as workshop-user with password: `p@ssw0rd`
+--->
+
+## Accessing OpenShift
+1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
+2. Use your credentials in the table below. 
+
+## Links to platforms
+- OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
+<!---
+- Instana URL: <https://lcsins01.dmz/#/home>
+- Turbonomic URL: <https://nginx-turbonomic-platform.apps.x2pn.dmz/app/>
+- IBM Cloud Pak for Watson AIOps URL: <https://cpd-cp4waiops.apps.x2pn.dmz/zen/#/homepage>
+
+If you cannot access the webpage for any of the platforms above, check that the VPN is logged in on the Virtual Machine. If it is no longer logged in, please let the administrator know.
+
+Please do not reboot the Virtual Machine, as that will disconnect the VPN.
+
+## OpenShift, Instana, Turbonomic, and Cp4WAIOps credentials:
+--->
+## OpenShift credentials
+
+Usernames and passwords are the same for all of the platforms used in this tutorial.
+
+| Name| NN | Username | Password |
+|-----|----|--------------------|--------------------|
+| TBD | 01 | `user01` | `p@ssw0rd` |
+| TBD | 02 | `user02` | `p@ssw0rd` |
+| TBD | 03 | `user03` | `p@ssw0rd` |
+| TBD | 04 | `user04` | `p@ssw0rd` |
+| TBD | 05 | `user05` | `p@ssw0rd` |
+| TBD | 06 | `user06` | `p@ssw0rd` |
+| TBD | 07 | `user07` | `p@ssw0rd` |
+| TBD | 08 | `user08` | `p@ssw0rd` |
+| TBD | 09 | `user09` | `p@ssw0rd` |
+| TBD | 10 | `user10` | `p@ssw0rd` |
+| TBD | 11 | `user11` | `p@ssw0rd` |
+| TBD | 12 | `user12` | `p@ssw0rd` |
+| TBD | 13 | `user13` | `p@ssw0rd` |
+| TBD | 14 | `user14` | `p@ssw0rd` |
+| TBD | 15 | `user15` | `p@ssw0rd` |
+| TBD | 16 | `user16` | `p@ssw0rd` |
+| TBD | 17 | `user17` | `p@ssw0rd` |
+| TBD | 18 | `user18` | `p@ssw0rd` |
+| TBD | 19 | `user19` | `p@ssw0rd` |
+| TBD | 20 | `user20` | `p@ssw0rd` |
+| TBD | 21 | `user21` | `p@ssw0rd` |
+| TBD | 22 | `user22` | `p@ssw0rd` |
+| TBD | 23 | `user23` | `p@ssw0rd` |
+| TBD | 24 | `user24` | `p@ssw0rd` |
+| TBD | 25 | `user25` | `p@ssw0rd` |
+| TBD | 26 | `user26` | `p@ssw0rd` |
 
 ## OpenShift Overview
 
