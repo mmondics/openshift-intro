@@ -20,7 +20,7 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
   - [Introduction to the `oc` CLI](#introduction-to-the-oc-cli)
   - [Logging in with the `oc` CLI](#logging-in-with-the-oc-cli)
   - [Exploring the `oc` CLI](#exploring-the-oc-cli)
-  - [Use `oc` to Deploy a Python Application from Source Code](#use-oc-to-deploy-a-python-application-from-source-code)
+  - [Use `oc` to Deploy a Python Application](#use-oc-to-deploy-a-python-application)
   - [Deploying and Configuring MongoDB](#deploying-and-configuring-mongodb)
   - [Providing Sensitive Application with Secrets](#providing-sensitive-application-with-secrets)
   - [Metering, Monitoring, and Alerts](#metering-monitoring-and-alerts)
@@ -473,65 +473,35 @@ NOTE for those in the WSC hands-on lab session, you must complete the following 
 
 The set of objects created by `oc new-app` depends on the artifacts passed as an input.
 
-## Use `oc` to Deploy a Python Application from Source Code
+## Use `oc` to Deploy a Python Application
 
 The frontend application, `parksmap`, needs a backend. In this section, you will deploy a python application named `nationalparks`. This application performs 2D geo-spatial queries against a MongoDB database to locate and return map coordinates of all national parks in North America.
 
 26. **Deploy the python backend with the following `oc new-app` command**.
 
     ```text
-    oc new-app python~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
+    oc new-app --image=quay.io/mmondics/national-parks-backend:latest --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
     ```
 
     A few things to notice about this command:
-
+<!---
     - The `oc new-app` command is not being run against a specific container image. It is being run against python *source code* that exists in GitHub [here](https://github.com/mmondics/national-parks/tree/main/source/nationalparks-py). Although a Dockerfile exists in the directory, it is not being used due to the `pyhon~` option in the command. OpenShift is using its *source-to-image* capability to create its own Dockerfile and containerize the application from its source code. If you wanted to, you could have omitted the `python~` option and OpenShift would use the Dockerfile in the directory.
     - `--name` flag provides the name for the python Deployment
     - `-l` sets the following key=value pairs as labels on the deployment
-    
-    Sample Output:
-
-    ```text
-    ➜  ~ oc new-app python~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
-    warning: Cannot check if git requires authentication.
-    --> Found image ad4c417 (2 weeks old) in image stream "openshift/python" under tag "3.9-ubi8" for "python"
-
-        Python 3.9
-        ----------
-        Python 3.9 available as container is a base platform for building and running various Python 3.9 applications and frameworks. Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.
-
-        Tags: builder, python, python39, python-39, rh-python39
-
-        * A source build using source code from https://github.com/mmondics/national-parks will be created
-        * The resulting image will be pushed to image stream tag "nationalparks:latest"
-        * Use 'oc start-build' to trigger a new build
-
-    --> Creating resources with label app=national-parks-app,app.kubernetes.io/name=python,app.kubernetes.io/part-of=national-parks-app,component=nationalparks,role=backend ...
-        imagestream.image.openshift.io "nationalparks" created
-        buildconfig.build.openshift.io "nationalparks" created
-    Warning: would violate PodSecurity "restricted:v1.24": allowPrivilegeEscalation != false (container "nationalparks" must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container "nationalparks" must set securityContext.capabilities.drop=["ALL"]), runAsNonRoot != true (pod or container "nationalparks" must set securityContext.runAsNonRoot=true), seccompProfile (pod or container "nationalparks" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
-        deployment.apps "nationalparks" created
-        service "nationalparks" created
-    --> Success
-        Build scheduled, use 'oc logs -f buildconfig/nationalparks' to track its progress.
-        Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
-        'oc expose service/nationalparks'
-        Run 'oc status' to view your app.
-    ```
 
     The output from the `oc new-app` command tells you what all was created - an imagestream, buildconfig, deployment, and service. 
 
     The buildconfig is the configuration file that will be used to build the `nationalparks` container image. This build will automatically begin, and you can check its logs to watch the process. 
 
-27. **Check the `nationalparks` build log**.
+1.  **Check the `nationalparks` build log**.
    
     ```text
     oc logs build/nationalparks-1
     ```
 
     Once you see `Push successful` at the end of the build logs, your new container image has been built and pushed into OpenShift's internal registry. It will then automatically be deployed in a pod.
-
-28. **Check that the `nationalparks` pod is running and ready**.
+--->  
+2.  **Check that the `nationalparks` pod is running and ready**.
 
     ```text
     oc get pods
@@ -542,14 +512,13 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     ```text
     ➜  ~ oc get pods
     NAME                             READY   STATUS      RESTARTS   AGE
-    nationalparks-1-build            0/1     Completed   0          19m
     nationalparks-67b69fc9b7-z5znq   1/1     Running     0          18m
     parksmap-cbc66fb69-c87k7         1/1     Running     0          64s
     ```
 
     Once the `nationalparks` pod is `Running` and has `1/1` containers ready, the application is successfully deployed. However, the backend python application is only accessible from within the OCP cluster. It is exposed to the outside world, as you may have noticed from the output of the `oc new-app` command: `Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:`
 
-29. **Create a route that exposes the `nationalparks` service**.
+3.  **Create a route that exposes the `nationalparks` service**.
 
     ```text
     oc expose service/nationalparks
@@ -565,7 +534,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     ![routes](images/routes.png)
 
-30. **See the new route that was created**.
+4.  **See the new route that was created**.
 
     ```text
     oc get route
@@ -580,13 +549,13 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     parksmap        parksmap-user01-project.apps.example.com               parksmap        8080-tcp   edge/Redirect   None
     ```
 
-31. **Label the `nationalparks` route as the application backend**.
+5.  **Label the `nationalparks` route as the application backend**.
 
     ```text
     oc label route nationalparks type=parksmap-backend
     ```
 
-32. **Navigate to the frontend `parksmap` route in a web browser**. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
+6.  **Navigate to the frontend `parksmap` route in a web browser**. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
 
     e.g. <http://parksmap-userNN-project.apps.example.com>
 
