@@ -7,9 +7,7 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 - [openshift-intro](#openshift-intro)
   - [Table of Contents](#table-of-contents)
   - [Pre-Requisites](#pre-requisites)
-- [Accessing the Environment](#accessing-the-environment)
   - [Accessing OpenShift](#accessing-openshift)
-  - [Links to platforms](#links-to-platforms)
   - [OpenShift credentials](#openshift-credentials)
   - [OpenShift Overview](#openshift-overview)
   - [Overview of the OpenShift Web Console](#overview-of-the-openshift-web-console)
@@ -38,7 +36,6 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/getting-started-cli.html)
 3. Projects created for each user with the names `userNN-project` (`NN` being each user number). Administrators can create this ahead of time with any limitations or quotas they wish, or administrators can allow users to create their own projects.
 
-# Accessing the Environment
 <!---The virtual machines seem to work best in a Firefox browser on your local workstation. Running the VMs in Chrome will sometimes result in an issue where your mouse pointer is not visible.
 
 ## Accessing your Virtual Machine
@@ -51,9 +48,9 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
 2. Use your credentials in the table below. 
 
+<!---
 ## Links to platforms
 - OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
-<!---
 - Instana URL: <https://lcsins01.dmz/#/home>
 - Turbonomic URL: <https://nginx-turbonomic-platform.apps.x2pn.dmz/app/>
 - IBM Cloud Pak for Watson AIOps URL: <https://cpd-cp4waiops.apps.x2pn.dmz/zen/#/homepage>
@@ -185,7 +182,32 @@ By default, the menu on the left side of the page should be activated and displa
 
     Each clusterOperator is responsible for managing resources related to a specific OpenShift function. For example, the `authentication` clusterOperator manages all of the resources (pods, routes, secrets, etc.) related to the LDAP authentication you are using to log in with the `userNN` username.
 
-7. In the Menu, **click Home -> Projects.**
+7. In the Menu, **click Compute -> Nodes.**
+
+    ![compute-nodes.png](/images/compute-nodes.png)
+
+    As you see on the *Nodes* page, the OpenShift cluster is made up of control plane nodes and compute nodes.
+
+    - **Control Plane nodes** are responsible for most of the core Kubernetes and OpenShift services such as etcd, the Kubernetes and OpenShift apiservers, the scheduler, and more. There are all vital tasks that make it possible to run the cluster and schedule application workloads to Compute Nodes.
+    - **Compute nodes** are where application containers run. The containers for the sample application that you will build and deploy later in this lab will run on the compute nodes.
+
+    In production environments, nodes are typically run on multiple machines (physical and/or virtual) in order to be more highly available and fault-tolerant.
+
+8. On the Nodes page, click the hyperlink for one of the Compute nodes.
+
+    ![node-overview.png](/images/node-overview.png)
+
+    When looking at a specific node, you are provided a view similar to the OpenShift cluster overview page, but now it is scoped to display only the pods, events, metrics, etc. for the specific node of interest.
+
+9. On the Compute Node's page, click the tab named Details.
+
+    ![node-details.png](/images/node-details.png)
+
+    On the node details tab, you are provided more information about the node including the architecture it is running on. In the screenshot above, the `s390x` architecture indicates that the node is running the Linux on IBM zSystems (`s390x`) architecture.
+
+    One of the many benefits of OpenShift (and Kubernetes more broadly) is that they abstract away the underlying infrastructure from the end users - developers and Kubernetes administrators. It does not take any traditional or specialized skills to run containers on platforms such as IBM zSystems.
+    
+10. In the Menu, **click Home -> Projects.**
 
     ![home-projects.png](/images/home-projects.png)
 
@@ -193,7 +215,7 @@ By default, the menu on the left side of the page should be activated and displa
 
     Any project starting with `openshift-` or `kube-` contain the workloads running the OpenShift platform itself.
 
-8. **Click the userNN-project hyperlink** (where NN is your user number).
+11. **Click the userNN-project hyperlink** (where NN is your user number).
 
     Tip: With so many Projects displayed, you can use the search bar to find yours more easily.
 
@@ -205,11 +227,11 @@ By default, the menu on the left side of the page should be activated and displa
 
     The following step creates a **RoleBinding** object for the `default` ServiceAccount object. The service account communicates with the OpenShift Container Platform API to learn about pods, services, and resources within the project.
 
-9. **Click the RoleBindings tab of your project, and then click Create Binding.**
+12. **Click the RoleBindings tab of your project, and then click Create Binding.**
 
     ![create-binding.png](/images/create-binding.png)
 
-10. **Fill out the form as follows.**
+13. **Fill out the form as follows.**
 
     - Name: `sa-user-account`
     - Role Name: `view`
@@ -221,11 +243,11 @@ By default, the menu on the left side of the page should be activated and displa
 
     **Then click create.**
 
-11. **Look through the Overview tab of your project**.
+14. **Look through the Overview tab of your project**.
 
     This displays information about what’s going on in your project, such as CPU and memory usage, any alerts or crashlooping pods, an inventory of all the Kubernetes resources deployed in the project, and more. You won’t see much information yet, as no workloads should be running in this project.
 
-12. **Click the Workloads tab** to the right of YAML.
+15. **Click the Workloads tab** to the right of YAML.
 
     This page displays all of the workloads in your project, so it’s empty for now.
 
