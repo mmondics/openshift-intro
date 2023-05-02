@@ -56,7 +56,7 @@ Access via the command line:
 
 1. Open Powershell
 2. Connect to the Linux jumpbox (which has the `oc` CLI installed)
-    `ssh -l userNN -p p@ssw0rd --server=https://api.atsocpd1.dmz:6443` (where `NN` is your user number in the table below)
+    `ssh -l userNN 192.168.176.61` (with `NN` and password from the table below)
 3. Follow remaining instructions in lab doc
 
 <!---
