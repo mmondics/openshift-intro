@@ -482,9 +482,9 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     ```text
     oc new-app --image=quay.io/mmondics/national-parks-backend:latest --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
     ```
-
-    A few things to notice about this command:
 <!---
+    A few things to notice about this command:
+
     - The `oc new-app` command is not being run against a specific container image. It is being run against python *source code* that exists in GitHub [here](https://github.com/mmondics/national-parks/tree/main/source/nationalparks-py). Although a Dockerfile exists in the directory, it is not being used due to the `pyhon~` option in the command. OpenShift is using its *source-to-image* capability to create its own Dockerfile and containerize the application from its source code. If you wanted to, you could have omitted the `python~` option and OpenShift would use the Dockerfile in the directory.
     - `--name` flag provides the name for the python Deployment
     - `-l` sets the following key=value pairs as labels on the deployment
@@ -626,7 +626,7 @@ The following procedure adds the secret `nationalparks-mongodb-parameters` and m
     oc exec $(oc get pods -l component=nationalparks | tail -n 1 | awk '{print $1;}') -- curl -s http://localhost:8080/ws/data/load
     ```
 
-    If you see `"Items inserted in database: 226"`, the data was successfully loaded.
+    If you see `"Items inserted in database: 204"`, the data was successfully loaded.
 
 37. Finally, **return to your frontend `parksmap` application in a web browser**.
 
