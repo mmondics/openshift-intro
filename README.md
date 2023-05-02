@@ -45,8 +45,19 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 --->
 
 ## Accessing OpenShift
+
+Access via the web console:
+
 1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
-2. Use your credentials in the table below. 
+2. Use your credentials in the table below.
+3. Follow remaining instructions in lab doc
+
+Access via the command line:
+
+1. Open Powershell
+2. Connect to the Linux jumpbox (which has the `oc` CLI installed)
+    `ssh -l userNN -p p@ssw0rd` (where `NN` is your user number in the table below)
+3. Follow remaining instructions in lab doc
 
 <!---
 ## Links to platforms
