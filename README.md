@@ -67,32 +67,26 @@ Usernames and passwords are the same for all of the platforms used in this tutor
 
 | Name| NN | Username | Password |
 |-----|----|--------------------|--------------------|
-| TBD | 01 | `user01` | `p@ssw0rd` |
-| TBD | 02 | `user02` | `p@ssw0rd` |
-| TBD | 03 | `user03` | `p@ssw0rd` |
-| TBD | 04 | `user04` | `p@ssw0rd` |
-| TBD | 05 | `user05` | `p@ssw0rd` |
-| TBD | 06 | `user06` | `p@ssw0rd` |
-| TBD | 07 | `user07` | `p@ssw0rd` |
-| TBD | 08 | `user08` | `p@ssw0rd` |
-| TBD | 09 | `user09` | `p@ssw0rd` |
-| TBD | 10 | `user10` | `p@ssw0rd` |
-| TBD | 11 | `user11` | `p@ssw0rd` |
-| TBD | 12 | `user12` | `p@ssw0rd` |
-| TBD | 13 | `user13` | `p@ssw0rd` |
-| TBD | 14 | `user14` | `p@ssw0rd` |
-| TBD | 15 | `user15` | `p@ssw0rd` |
-| TBD | 16 | `user16` | `p@ssw0rd` |
-| TBD | 17 | `user17` | `p@ssw0rd` |
+| Dao | 01 | `user01` | `p@ssw0rd` |
+| Girard | 02 | `user02` | `p@ssw0rd` |
+| Goli | 03 | `user03` | `p@ssw0rd` |
+| Ignacio | 04 | `user04` | `p@ssw0rd` |
+| Lima | 05 | `user05` | `p@ssw0rd` |
+| Marberl | 06 | `user06` | `p@ssw0rd` |
+| Morris | 07 | `user07` | `p@ssw0rd` |
+| Penfold | 08 | `user08` | `p@ssw0rd` |
+| Porto | 09 | `user09` | `p@ssw0rd` |
+| Sams | 10 | `user10` | `p@ssw0rd` |
+| Terry | 11 | `user11` | `p@ssw0rd` |
+| Tong | 12 | `user12` | `p@ssw0rd` |
+| Veerasingam | 13 | `user13` | `p@ssw0rd` |
+| Velasquez | 14 | `user14` | `p@ssw0rd` |
+| Wagner | 15 | `user15` | `p@ssw0rd` |
+| Whitehead | 16 | `user16` | `p@ssw0rd` |
+| Edwards | 17 | `user17` | `p@ssw0rd` |
 | TBD | 18 | `user18` | `p@ssw0rd` |
 | TBD | 19 | `user19` | `p@ssw0rd` |
 | TBD | 20 | `user20` | `p@ssw0rd` |
-| TBD | 21 | `user21` | `p@ssw0rd` |
-| TBD | 22 | `user22` | `p@ssw0rd` |
-| TBD | 23 | `user23` | `p@ssw0rd` |
-| TBD | 24 | `user24` | `p@ssw0rd` |
-| TBD | 25 | `user25` | `p@ssw0rd` |
-| TBD | 26 | `user26` | `p@ssw0rd` |
 
 ## OpenShift Overview
 
@@ -206,7 +200,7 @@ By default, the menu on the left side of the page should be activated and displa
     On the node details tab, you are provided more information about the node including the architecture it is running on. In the screenshot above, the `s390x` architecture indicates that the node is running the Linux on IBM zSystems (`s390x`) architecture.
 
     One of the many benefits of OpenShift (and Kubernetes more broadly) is that they abstract away the underlying infrastructure from the end users - developers and Kubernetes administrators. It does not take any traditional or specialized skills to run containers on platforms such as IBM zSystems.
-    
+
 10. In the Menu, **click Home -> Projects.**
 
     ![home-projects.png](/images/home-projects.png)
