@@ -7,8 +7,6 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 - [openshift-intro](#openshift-intro)
   - [Table of Contents](#table-of-contents)
   - [Pre-Requisites](#pre-requisites)
-  - [Accessing OpenShift](#accessing-openshift)
-  - [OpenShift credentials](#openshift-credentials)
   - [OpenShift Overview](#openshift-overview)
   - [Overview of the OpenShift Web Console](#overview-of-the-openshift-web-console)
   - [Connect to the OpenShift Console](#connect-to-the-openshift-console)
@@ -42,7 +40,6 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 1. Go here: <https://techzone.ibm.com/my/workshops/student/63fcce8ab8e43200194a2201>
 2. Log in with your IBM ID and enter the workshop password: `p@ssw0rd` (that's a zero)
 3. Log into the RHEL virtual machine as workshop-user with password: `p@ssw0rd`
---->
 
 ## Accessing OpenShift
 
@@ -59,7 +56,6 @@ Access via the command line:
     `ssh -l userNN 192.168.176.61` (with `NN` and password from the table below)
 3. Follow remaining instructions in lab doc
 
-<!---
 ## Links to platforms
 - OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
 - Instana URL: <https://lcsins01.dmz/#/home>
@@ -71,34 +67,34 @@ If you cannot access the webpage for any of the platforms above, check that the 
 Please do not reboot the Virtual Machine, as that will disconnect the VPN.
 
 ## OpenShift, Instana, Turbonomic, and Cp4WAIOps credentials:
---->
+
 ## OpenShift credentials
 
 Usernames and passwords are the same for all of the platforms used in this tutorial.
 
 | Name| NN | Username | Password |
 |-----|----|--------------------|--------------------|
-| Dao | 01 | `user01` | `p@ssw0rd` |
-| Girard | 02 | `user02` | `p@ssw0rd` |
-| Goli | 03 | `user03` | `p@ssw0rd` |
-| Ignacio | 04 | `user04` | `p@ssw0rd` |
-| Lima | 05 | `user05` | `p@ssw0rd` |
-| Marberl | 06 | `user06` | `p@ssw0rd` |
-| Morris | 07 | `user07` | `p@ssw0rd` |
-| Penfold | 08 | `user08` | `p@ssw0rd` |
-| Porto | 09 | `user09` | `p@ssw0rd` |
-| Sams | 10 | `user10` | `p@ssw0rd` |
-| Terry | 11 | `user11` | `p@ssw0rd` |
-| Tong | 12 | `user12` | `p@ssw0rd` |
-| Veerasingam | 13 | `user13` | `p@ssw0rd` |
-| Velasquez | 14 | `user14` | `p@ssw0rd` |
-| Wagner | 15 | `user15` | `p@ssw0rd` |
-| Whitehead | 16 | `user16` | `p@ssw0rd` |
-| Edwards | 17 | `user17` | `p@ssw0rd` |
+| TBD | 01 | `user01` | `p@ssw0rd` |
+| TBD | 02 | `user02` | `p@ssw0rd` |
+| TBD | 03 | `user03` | `p@ssw0rd` |
+| TBD | 04 | `user04` | `p@ssw0rd` |
+| TBD | 05 | `user05` | `p@ssw0rd` |
+| TBD | 06 | `user06` | `p@ssw0rd` |
+| TBD | 07 | `user07` | `p@ssw0rd` |
+| TBD | 08 | `user08` | `p@ssw0rd` |
+| TBD | 09 | `user09` | `p@ssw0rd` |
+| TBD | 10 | `user10` | `p@ssw0rd` |
+| TBD | 11 | `user11` | `p@ssw0rd` |
+| TBD | 12 | `user12` | `p@ssw0rd` |
+| TBD | 13 | `user13` | `p@ssw0rd` |
+| TBD | 14 | `user14` | `p@ssw0rd` |
+| TBD | 15 | `user15` | `p@ssw0rd` |
+| TBD | 16 | `user16` | `p@ssw0rd` |
+| TBD | 17 | `user17` | `p@ssw0rd` |
 | TBD | 18 | `user18` | `p@ssw0rd` |
 | TBD | 19 | `user19` | `p@ssw0rd` |
 | TBD | 20 | `user20` | `p@ssw0rd` |
-
+--->
 ## OpenShift Overview
 
 ![ocp](images/ocp.png)
