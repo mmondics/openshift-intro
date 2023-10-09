@@ -1,6 +1,6 @@
 # openshift-intro
  
-In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM zSystems, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
+In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM Z, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
 
 ## Table of Contents
 
@@ -204,9 +204,9 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![node-details.png](/images/node-details.png)
 
-    On the node details tab, you are provided more information about the node including the architecture it is running on. In the screenshot above, the `s390x` architecture indicates that the node is running the Linux on IBM zSystems (`s390x`) architecture.
+    On the node details tab, you are provided more information about the node including the architecture it is running on. In the screenshot above, the `s390x` architecture indicates that the node is running the Linux on IBM Z (`s390x`) architecture.
 
-    One of the many benefits of OpenShift (and Kubernetes more broadly) is that they abstract away the underlying infrastructure from the end users - developers and Kubernetes administrators. It does not take any traditional or specialized skills to run containers on platforms such as IBM zSystems.
+    One of the many benefits of OpenShift (and Kubernetes more broadly) is that they abstract away the underlying infrastructure from the end users - developers and Kubernetes administrators. It does not take any traditional or specialized skills to run containers on platforms such as IBM Z.
 
 10. In the Menu, **click Home -> Projects.**
 
@@ -822,7 +822,7 @@ To learn more about OpenShift Container Platform and see the additional tooling 
 - [OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
 - [Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
 - [OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
-- [OpenShift on IBM zSystems Datasheet](https://www.redhat.com/en/resources/openshift-ibm-z-linuxone-datasheet)
+- [OpenShift on IBM Z Datasheet](https://www.redhat.com/en/resources/openshift-ibm-z-linuxone-datasheet)
 
 ## Glossary of Terms
 
