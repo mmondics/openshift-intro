@@ -374,7 +374,13 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 22. **Log in with your OpenShift credentials and click the Display Token hyperlink**.
 
-NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the RHEL virtual machine terminal, the command will time out.
+NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the Windows virtual machine terminal, the command will result in an error.
+
+NOTE if the copied command fails, try adding the following flag to the end of the `oc login command`:
+
+```text
+--insecure-skip-tls-verify
+```
 
 23. **Copy the line that begins with `oc login`, paste it into a terminal session, and execute the command**.
 
@@ -506,7 +512,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     oc logs build/nationalparks-1
     ```
 
-    Once you see `Push successful` at the end of the build logs, your new container image has been built and pushed into OpenShift's internal registry. It will then automatically be deployed in a pod.
+    You can add the `-f` flag to follow the build logs. Once you see `Push successful` at the end of the build logs, your new container image has been built and pushed into OpenShift's internal registry. It will then automatically be deployed in a pod.
 
 28. **Check that the `nationalparks` pod is running and ready**.
 
@@ -566,7 +572,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 32. **Navigate to the frontend `parksmap` route in a web browser**. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
 
-    e.g. <http://parksmap-userNN-project.apps.example.com>
+    For example: `http://parksmap-userNN-project.apps.example.com`
 
     Alternatively, you can click the small arrow button associated with the `parksmap` deployment in the OpenShift web console topology.
 
