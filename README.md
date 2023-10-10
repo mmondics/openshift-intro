@@ -737,6 +737,8 @@ In this lab, you will use ODF to store the National Park locations that are insi
 
     On the Block and File tab, you can see information about the capacity and performance of block and file storage. You should also see your `userNN-project` listed as a storage consumer under *Used Capacity Breakdown*. 
 
+    ![odf-block-file](images/odf-block-file.png)
+
 OpenShift Data Foundation is a powerful software-defined storage solution for storage administrators who need visibility into the consumption and performance of storage in an OpenShift environment. 
 
 ## Metering, Monitoring, and Alerts
