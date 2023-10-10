@@ -9,9 +9,20 @@
 
 If you run into an issue where your mouse pointer is not visible, try to open the Virtual Machine in a different browser. If that doesn't work, try to open the VM in a new window with the button in the top right of the VM.
 
-## Accessing OpenShift
+Please do not log off or reboot the Virtual Machine, as that will disconnect the VPN.
+
+## Accessing OpenShift web console
 1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocppa.dmz/dashboards>
 2. Use your credentials in the table below. 
+
+## Accessing OpenShift CLI
+To access OpenShift via the CLI, you must first `ssh` to one of our WSC Linux guests from the RHEL Virtual Machine.
+
+```text
+ssh userNN@192.168.176.61
+```
+
+Then paste your `oc login` command.
 
 <!---
 ## Links to platforms
@@ -22,8 +33,6 @@ If you run into an issue where your mouse pointer is not visible, try to open th
 
 If you cannot access the webpage for any of the platforms above, check that the Cisco Secure Client VPN is logged in on the Virtual Machine. If it is no longer logged in, please let the lab administrator know.
 --->
-
-Please do not log off or reboot the Virtual Machine, as that will disconnect the VPN.
 
 ## OpenShift credentials
 
