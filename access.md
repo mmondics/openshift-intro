@@ -16,7 +16,7 @@ Please do not log off or reboot the Virtual Machine, as that will disconnect the
 2. Use your credentials in the table below. 
 
 ## Accessing OpenShift CLI
-To access OpenShift via the CLI, you must first `ssh` to one of our WSC Linux guests from the RHEL Virtual Machine.
+To access OpenShift via the CLI, you must first `ssh` to one of our WSC Linux guests from the Windows Virtual Machine.
 
 ```text
 ssh userNN@192.168.176.61
