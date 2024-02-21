@@ -1,6 +1,6 @@
 # openshift-intro
  
-In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.12/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM Z, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
+In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.14/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM Z, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 
 ## Pre-Requisites
 1. Access to an OpenShift cluster
-2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/getting-started-cli.html)
+2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.14/cli_reference/openshift_cli/getting-started-cli.html)
 3. Projects created for each user with the names `userNN-project` (`NN` being each user number). Administrators can create this ahead of time with any limitations or quotas they wish, or administrators can allow users to create their own projects.
 
 <!---The virtual machines seem to work best in a Firefox browser on your local workstation. Running the VMs in Chrome will sometimes result in an issue where your mouse pointer is not visible.
@@ -124,15 +124,15 @@ You can manage applications within the cluster either manually by configuring [d
 
 The OpenShift Container Platform web console is a user interface accessible from a web browser.
 
-Developers can use the web console to [visualize, browse, and manage the contents of projects](https://docs.openshift.com/container-platform/4.12/web_console/odc-about-developer-perspective.html).
+Developers can use the web console to [visualize, browse, and manage the contents of projects](https://docs.openshift.com/container-platform/4.14/web_console/web-console-overview.html#about-developer-perspective_web-console-overview).
 
 ![openshift-console](/images/openshift-console.png)
 
-Administrators can use the web console to manage and monitor applications running on the cluster, [along with the cluster itself](https://docs.openshift.com/container-platform/4.12/web_console/using-dashboard-to-get-cluster-information.html).
+Administrators can use the web console to manage and monitor applications running on the cluster, [along with the cluster itself](https://docs.openshift.com/container-platform/4.14/web_console/using-dashboard-to-get-cluster-information.html).
 
 ![openshift-console-admin](/images/openshift-console-admin.png)
 
-[The web console can be customized](https://docs.openshift.com/container-platform/4.12/web_console/configuring-web-console.html) to suit an organization's needs, and when you log into the web console, you will only see the cluster resources that are available to you as allowed by the OpenShift Role Based Access Control (RBAC).
+[The web console can be customized](https://docs.openshift.com/container-platform/4.14/web_console/configuring-web-console.html) to suit an organization's needs, and when you log into the web console, you will only see the cluster resources that are available to you as allowed by the OpenShift Role Based Access Control (RBAC).
 
 The web console runs as a group of pods on the control plane nodes in the `openshift-console` project, along with a service exposed as a route. Like any other OpenShift application the service is an internal load balancer that directs traffic to one of the OpenShift console pods. The route is what allows external access into the service, and it is the address you connect to when accessing the OpenShift web console.
 
@@ -347,7 +347,7 @@ When you deployed the `national-parks-frontend` image, a deployment resource was
 
     This is a simple demonstration of horizontal scaling with Kubernetes. You now have two instances of your pod running in the OpenShift cluster. Traffic to the `parksmap` application will now be distributed to each pod, and if for some reason a pod is lost, that traffic will be redistributed to the remaining pods until a Kubernetes starts another. If a whole compute node is lost, Kubernetes will move the pods to different compute nodes.
 
-    OpenShift and Kubernetes also support [horizontal autoscaling](https://docs.openshift.com/container-platform/4.12/nodes/pods/nodes-pods-autoscaling.html) of pods based on CPU or memory consumption, but that is outside the scope of this lab.
+    OpenShift and Kubernetes also support [horizontal autoscaling](https://docs.openshift.com/container-platform/4.14/nodes/pods/nodes-pods-autoscaling.html) of pods based on CPU or memory consumption, but that is outside the scope of this lab.
 
 Now that you are more familiar with the OpenShift web console, the next section will introduce you to the OpenShift command line interface (CLI) `oc`. You will use the `oc` CLI to deploy a backend python application to serve data to the frontend `parksmap` as well as to deploy a containerized MongoDB application.
 
@@ -363,7 +363,7 @@ The `oc` CLI is an incredibly powerful tool to manage OpenShift clusters and app
 
 Furthermore, many people familiar with Linux and/or Kubernetes tend to find the `oc` command line an easier and more efficient method of performing tasks, rather than the web-based console.
 
-Like with the OpenShift web console, the OpenShift command line includes functions both [for developers](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/developer-cli-commands.html) and for [administrators](https://docs.openshift.com/container-platform/4.12/cli_reference/openshift_cli/administrator-cli-commands.html).
+Like with the OpenShift web console, the OpenShift command line includes functions both [for developers](https://docs.openshift.com/container-platform/4.14/cli_reference/openshift_cli/developer-cli-commands.html) and for [administrators](https://docs.openshift.com/container-platform/4.14/cli_reference/openshift_cli/administrator-cli-commands.html).
 
 For those who are familiar with Kubernetes and its `kubectl` CLI tool, the `oc` tool is essentially analogous but with additional features.
 
@@ -548,7 +548,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     However, services are **internal** to the cluster. They allow pods to communicate with other pods inside the cluster, but not with the outside world. For external access, we need to introduce another object - **routes**. 
 
-    [Routes](https://docs.openshift.com/container-platform/4.12/rest_api/network_apis/route-route-openshift-io-v1.html) are OpenShift objects - they do not exist in upstream Kubernetes. Routes *expose* servies as publicly-accessible addresses for users and applications to interact with. When you access an OpenShift appliction in a web browser, such as the `parksmap` webpage or even the OpenShift console, you navigate to that pod's route.
+    [Routes](https://docs.openshift.com/container-platform/4.14/rest_api/network_apis/route-route-openshift-io-v1.html) are OpenShift objects - they do not exist in upstream Kubernetes. Routes *expose* servies as publicly-accessible addresses for users and applications to interact with. When you access an OpenShift appliction in a web browser, such as the `parksmap` webpage or even the OpenShift console, you navigate to that pod's route.
 
     ![routes](images/routes.png)
 
@@ -916,7 +916,7 @@ Once you're ready to clean up your OpenShift project, follow the instructions in
 
 To learn more about OpenShift Container Platform and see the additional tooling it provides to develop and manage more complex applications, please refer to the following links.
 
-- [OpenShift 4.12 Documentation](https://docs.openshift.com/container-platform/4.12/welcome/index.html)
+- [OpenShift 4.14 Documentation](https://docs.openshift.com/container-platform/4.14/welcome/index.html)
 - [OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
 - [Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
 - [OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
