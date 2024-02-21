@@ -85,6 +85,8 @@ The OpenShift web console is a great example of how OpenShift itself is run and 
 
 2. In the browser, **navigate to your OpenShift console.** 
 
+    If you are going through this lab during a workshop provided by the IBM Z Washington Systems Center, you can find this address in the [access page](access.md) in this respository.
+
     The OpenShift console typically begins with `https://console-openshift-console-`. Reach out to your OpenShift administrator if you do not have this address.
 
     You will now see the OpenShift console login page.
@@ -99,9 +101,9 @@ Take a moment to notice the following elements in the navigation bar:
 
 ![navigation-bar.png](/images/navigation-bar.png)
 
-Note: These buttons display on each page of the OpenShift console. Note that the Applications button might be missing from your screen, depending on your credentials and which applications are currently deployed on the cluster.
+These buttons display on each page of the OpenShift console. Note that the Applications button might be missing from your screen, depending on your credentials and which applications are currently deployed on the cluster.
 
-By default, the menu on the left side of the page should be activated and displaying the cluster menu.
+By default, the menu on the left side of the page should be activated and displaying the cluster menu. However, if your screen is sized too small, you may need to click the Menu button to expand it.
 
 4. In the left-side menu, **select the Administrator perspective** if it isn't already showing.
 
@@ -138,13 +140,13 @@ By default, the menu on the left side of the page should be activated and displa
 
     In production environments, nodes are typically run on multiple machines (physical and/or virtual) in order to be more highly available and fault-tolerant.
 
-8. On the Nodes page, click the hyperlink for one of the Compute nodes.
+8. On the Nodes page, *click the hyperlink for one of the Compute nodes*.
 
     ![node-overview.png](/images/node-overview.png)
 
     When looking at a specific node, you are provided a view similar to the OpenShift cluster overview page, but now it is scoped to display only the pods, events, metrics, etc. for the specific node of interest.
 
-9. On the Compute Node's page, click the tab named Details.
+9. On the Compute Node's page, *click the Details tab*.
 
     ![node-details.png](/images/node-details.png)
 
@@ -156,11 +158,11 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![home-projects.png](/images/home-projects.png)
 
-    The rest of the page is populated by projects. A project has been created for you to work in named `userNN-project` (where NN is your user number). If your OpenShift administrator did not create this project for you, you should be able to do so yourself with the `Create Project` button in the top right of the projects page.
+    The rest of the page is populated by projects. A project has been created for you to work in named `userNN-project` (where 'NN' is your user number). If your OpenShift administrator did not create this project for you, you should be able to do so yourself with the `Create Project` button in the top right of the projects page.
 
     Any project starting with `openshift-` or `kube-` contain the workloads running the OpenShift platform itself.
 
-11. **Click the userNN-project hyperlink** (where NN is your user number).
+11. **Click the userNN-project hyperlink** (where 'NN' is your user number).
 
     Tip: With so many Projects displayed, you can use the search bar to find yours more easily.
 
@@ -168,9 +170,9 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![empty-openshift-project.png](/images/empty-openshift-project.png)
 
-    OpenShift automatically creates a few special service accounts in every project. The `default` service account takes responsibility for running the pods. OpenShift uses and injects this service account into every pod that launches.
+    OpenShift automatically creates a few special [serviceAccounts](#glossary-of-terms) in every project. The `default` serviceAccount takes responsibility for running the pods. OpenShift uses and injects this serviceAccount into every pod that launches.
 
-    The following step creates a **RoleBinding** object for the `default` ServiceAccount object. The service account communicates with the OpenShift Container Platform API to learn about pods, services, and resources within the project.
+    The following step creates a **RoleBinding** object for the `default` serviceAccount object. The serviceAccount communicates with the OpenShift Container Platform API to learn about pods, services, and resources within the project.
 
 12. **Click the RoleBindings tab of your project, and then click Create Binding.**
 
@@ -188,6 +190,8 @@ By default, the menu on the left side of the page should be activated and displa
 
     **Then click create.**
 
+    Now, the pods you create in this project that use the `default` serviceAccount will have the proper permissions needed for the sample application.
+
 14. **Look through the Overview tab of your project**.
 
     This displays information about what’s going on in your project, such as CPU and memory usage, any alerts or crashlooping pods, an inventory of all the Kubernetes resources deployed in the project, and more. You won’t see much information yet, as no workloads should be running in this project.
@@ -196,7 +200,7 @@ By default, the menu on the left side of the page should be activated and displa
 
     This page displays all of the workloads in your project, so it’s empty for now.
 
-    All objects in OpenShift can be generated using YAML files. YAML (standing for Yet Another Markup Language) is a human-readable language for configuration files. Most OpenShift object such as Deployments, Services, Routes, etc. can be modified by directly editing their YAML file in either the console or command line.
+    All objects in OpenShift can be generated using [YAML(https://yaml.org/)] files. YAML is a human-readable language for configuration files. Most OpenShift object such as Deployments, Services, Routes, etc. can be modified by directly editing their YAML file in either the console or command line.
 
     Workloads are typically created by developers, so in the next section, you will swap to the developer perspective to deploy an application. You will return to the administrator perspective later in this lab.
 
@@ -210,7 +214,7 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![developer-menu.png](/images/developer-menu.png)
 
-Switching to the Developer perspective takes you to the *Topology* view. If no workloads are deployed in the selected project, options to start building an application or visit the +Add page or are displayed.
+Switching to the Developer perspective should take you to the *Topology* view. If this isn't the case, select the *Topology* item in the left-side menu. If no workloads are deployed in the selected project, options to start building an application or visit the +Add page or are displayed.
 
 1.  **Click the +Add button in the menu**.
 
@@ -312,13 +316,13 @@ For those who are familiar with Kubernetes and its `kubectl` CLI tool, the `oc` 
 
 The frontend application, `parksmap`, needs a backend. In this section, you will deploy a python application named `nationalparks`. This application performs 2D geo-spatial queries against a MongoDB database to locate and return map coordinates of all national parks in North America.
 
+**NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the Windows virtual machine terminal, the command will result in an error.**
+
 21. From the OpenShift web console, **click your username in the top right corner** (i.e. `Workshop User NN`) and select `Copy login command`.
 
     ![copy-login-command](images/copy-login-command.png)
 
 22. **Log in with your OpenShift credentials and click the Display Token hyperlink**.
-
-NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the Windows virtual machine terminal, the command will result in an error.
 
 NOTE if the copied command fails, try adding the following flag to the end of the `oc login command`:
 
@@ -453,10 +457,10 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 27. **Check the `nationalparks` build log**.
    
     ```text
-    oc logs build/nationalparks-1
+    oc logs build/nationalparks-1 -f
     ```
 
-    You can add the `-f` flag to follow the build logs. Once you see `Push successful` at the end of the build logs, your new container image has been built and pushed into OpenShift's internal registry. It will then automatically be deployed in a pod.
+    The `-f` flag lets you follow the build logs (similar to Linux's 'tail' command). Once you see `Push successful` at the end of the build logs, your new container image has been built and pushed into OpenShift's internal registry. It will then automatically be deployed in a pod.
 
 28. **Check that the `nationalparks` pod is running and ready**.
 
@@ -475,7 +479,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     parksmap-cbc66fb69-dmnf7         1/1     Running     0          3m24s
     ```
 
-    Once the `nationalparks` pod is `Running` and has `1/1` containers ready, the application is successfully deployed. However, the backend python application is only accessible from within the OCP cluster. It is exposed to the outside world, as you may have noticed from the output of the `oc new-app` command: `Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:`
+    Once the `nationalparks` pod is `Running` and has `1/1` containers ready, the application is successfully deployed. However, the backend python application is only accessible from within the OCP cluster. It is not exposed to the outside world, as you may have noticed from the output of the `oc new-app` command: `Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:`
 
 29. **Create a route that exposes the `nationalparks` service**.
 
@@ -489,7 +493,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     However, services are **internal** to the cluster. They allow pods to communicate with other pods inside the cluster, but not with the outside world. For external access, we need to introduce another object - **routes**. 
 
-    [Routes](https://docs.openshift.com/container-platform/4.14/rest_api/network_apis/route-route-openshift-io-v1.html) are OpenShift objects - they do not exist in upstream Kubernetes. Routes *expose* servies as publicly-accessible addresses for users and applications to interact with. When you access an OpenShift appliction in a web browser, such as the `parksmap` webpage or even the OpenShift console, you navigate to that pod's route.
+    [Routes](https://docs.openshift.com/container-platform/4.14/rest_api/network_apis/route-route-openshift-io-v1.html) are OpenShift objects - they do not exist in upstream Kubernetes. Routes *expose* services as publicly-accessible addresses for users and applications to interact with. When you access an OpenShift appliction in a web browser, such as the `parksmap` webpage or even the OpenShift console, you navigate to that pod's route.
 
     ![routes](images/routes.png)
 
@@ -540,10 +544,16 @@ The MongoDB you will deploy in this section will store all information about the
 
     A few things to notice about this command:
 
-    - You're deploying a pre-built container image hosted at quay.io/mmondics/mongodb. 
+    - You're deploying a pre-built container image hosted at <quay.io/mmondics/mongodb>. 
     - `--name` sets the name of the MongoDB deployment
     - `-e` sets environment variables within the resulting container. These can be used like any other environment variable when the container is running, and you can see them by connecting to the pod and running the `env` command
     - `-l` sets labels for this deployment
+
+34. In a later step, you will be adding persistent storage to this MongoDB deployment. Mounting storage requires a certain securityContext, so in preparation, **please run the following command to add the proper securityContext**.
+
+    ```text
+    kubectl patch deployment mongodb-nationalparks -n user01-project --type='json' -p='[{"op":"add","path":"/spec/template/spec/securityContext","value":{"fsGroup":184,"runAsGroup":184,"runAsUser":184}}]'
+    ```
 
     Once again, you can check `oc get pods` to see when the MongoDB pod is ready.
 
@@ -569,7 +579,7 @@ The following procedure adds the secret `nationalparks-mongodb-parameters` and m
     oc create secret generic nationalparks-mongodb-parameters --from-literal=DATABASE_SERVICE_NAME=mongodb-nationalparks --from-literal=MONGODB_USER=mongodb --from-literal=MONGODB_PASSWORD=mongodb --from-literal=MONGODB_DATABASE=mongodb --from-literal=MONGODB_ADMIN_PASSWORD=mongodb
     ```
 
-35. **Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalpartks` workload**.
+35. **Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalparks` workload**.
 
     ```text
     oc set env --from=secret/nationalparks-mongodb-parameters deploy/nationalparks
@@ -597,7 +607,7 @@ This interactive map is the culmination of all the Kubernetes and OpenShift obje
 
  **Red Hat OpenShift Data Foundation** is software-defined storage that is optimized for container environments. It runs as an operator on OpenShift Container Platform to provide highly integrated and simplified persistent storage management for containers.
 
-Red Hat OpenShift Data Foundation is integrated into the latest Red Hat OpenShift Container Platform to address platform services, application portability, and persistence challenges.It provides a highly scalable backend for the next generation of cloud-native applications, built on a technology stack that includes Red Hat Ceph Storage, the Rook.io Operator, and NooBaa’s Multicloud Object Gateway technology. OpenShift Data Foundation also supports Logical Volume Manager Storage for single node OpenShift clusters.
+Red Hat OpenShift Data Foundation is integrated into the latest Red Hat OpenShift Container Platform to address platform services, application portability, and persistence challenges. It provides a highly scalable backend for the next generation of cloud-native applications, built on a technology stack that includes Red Hat Ceph Storage, the Rook.io Operator, and NooBaa’s Multicloud Object Gateway technology. OpenShift Data Foundation also supports Logical Volume Manager Storage for single node OpenShift clusters.
 
 Red Hat OpenShift Data Foundation provides a trusted, enterprise-grade application development environment that simplifies and enhances the user experience across the application lifecycle in a number of ways:
 
@@ -876,3 +886,4 @@ To learn more about OpenShift Container Platform and see the additional tooling 
 | Role-Based Access Control (RBAC) | A key security control to ensure that cluster users and workloads have only access to resources required to execute their roles.                                                                                                                       |
 | Route                            | Routes expose a service to allow for network access to pods from users and applications outside the OpenShift Container Platform instance.                                                                                                             |
 | Service                          | A service exposes a running application on a set of pods.                                                                                                                                                                                              |
+|serviceAccount|Object that provides an identity for processes running in a Pod. serviceAccounts authenticate against the Kubernetes API using their own credentials that are managed with Role-Based Access Control (RBAC).|
