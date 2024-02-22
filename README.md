@@ -552,7 +552,7 @@ The MongoDB you will deploy in this section will store all information about the
 34. In a later step, you will be adding persistent storage to this MongoDB deployment. Mounting storage requires a certain securityContext, so in preparation, **please run the following command to add the proper securityContext**.
 
     ```text
-    kubectl patch deployment mongodb-nationalparks -n user01-project --type='json' -p='[{"op":"add","path":"/spec/template/spec/securityContext","value":{"fsGroup":184,"runAsGroup":184,"runAsUser":184}}]'
+    oc patch deployment mongodb-nationalparks --type='json' -p='[{"op":"add","path":"/spec/template/spec/securityContext","value":{"fsGroup":184,"runAsGroup":184,"runAsUser":184}}]'
     ```
 
     Once again, you can check `oc get pods` to see when the MongoDB pod is ready.
