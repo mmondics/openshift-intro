@@ -5,7 +5,11 @@
 2. Log in with your IBM ID.
    1. If you don't already have an IBM ID, you will need to create one [here](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Flogin.ibm.com%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3FqsId%3Db9977aed-1e6b-4321-9b43-ee4365544452%26client_id%3DODllMDk4YzItMjgxOC00)
 3. When prompted, enter the workshop password: `p@ssw0rd` (that's a zero).
-4. If prompted, log into the Windows virtual machine with password: `IBMDem0s` (that's a zero). You may already be logged in when first accessing the VM.
+4. Open your virtual machine using the big blue button under 'VM Remote Console'.
+
+   ![vm-remote-console](images/vm-remote-console.png)
+   
+5. If prompted, log into the Windows virtual machine with password: `IBMDem0s` (that's a zero). You may already be logged in when first accessing the VM.
 
 If you run into an issue where your mouse pointer is not visible, try to open the Virtual Machine in a different browser. If that doesn't work, try to open the VM in a new window with the button in the top right of the VM.
 
