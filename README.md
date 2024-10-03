@@ -1,6 +1,6 @@
 # Introduction to Red Hat OpenShift
  
-In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.14/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM Z, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
+In this tutorial, you will walk through an introduction to OpenShift Container Platform (OCP) from both the web console and the OpenShift command line interface, `oc`. This tutorial is based on the [Getting Started](https://docs.openshift.com/container-platform/4.16/getting_started/openshift-web-console.html) portion of the OpenShift Container Platform documentation, but modified to run on various platform architectures (including IBM Z, IBM Power, and x86) as well as adding more explanations for the concepts it covers.
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ In this tutorial, you will walk through an introduction to OpenShift Container P
 
 ## Pre-Requisites
 1. Access to an OpenShift cluster
-2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.14/cli_reference/openshift_cli/getting-started-cli.html)
+2. `oc` CLI [installed](https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/getting-started-cli.html)
 3. Projects created for each user with the names `userNN-project` (`NN` being each user number). Administrators can create this ahead of time with any limitations or quotas they wish, or administrators can allow users to create their own projects.
 
 If you are going through this lab during a workshop provided by the IBM Z Washington Systems Center, these pre-requisites are already fulfilled in the environment you were provided.
@@ -65,15 +65,15 @@ You can manage applications within the cluster either manually by configuring [d
 
 The OpenShift Container Platform web console is a user interface accessible from a web browser.
 
-Developers can use the web console to [visualize, browse, and manage the contents of projects](https://docs.openshift.com/container-platform/4.14/web_console/web-console-overview.html#about-developer-perspective_web-console-overview).
+Developers can use the web console to [visualize, browse, and manage the contents of projects](https://docs.openshift.com/container-platform/4.16/web_console/web-console-overview.html#about-developer-perspective_web-console-overview).
 
 ![openshift-console](/images/openshift-console.png)
 
-Administrators can use the web console to manage and monitor applications running on the cluster, [along with the cluster itself](https://docs.openshift.com/container-platform/4.14/web_console/using-dashboard-to-get-cluster-information.html).
+Administrators can use the web console to manage and monitor applications running on the cluster, [along with the cluster itself](https://docs.openshift.com/container-platform/4.16/web_console/using-dashboard-to-get-cluster-information.html).
 
 ![openshift-console-admin](/images/openshift-console-admin.png)
 
-[The web console can be customized](https://docs.openshift.com/container-platform/4.14/web_console/configuring-web-console.html) to suit an organization's needs, and when you log into the web console, you will only see the cluster resources that are available to you as allowed by the OpenShift Role Based Access Control (RBAC).
+[The web console can be customized](https://docs.openshift.com/container-platform/4.16/web_console/configuring-web-console.html) to suit an organization's needs, and when you log into the web console, you will only see the cluster resources that are available to you as allowed by the OpenShift Role Based Access Control (RBAC).
 
 The web console runs as a group of pods on the control plane nodes in the `openshift-console` project, along with a service exposed as a route. Like any other OpenShift application the service is an internal load balancer that directs traffic to one of the OpenShift console pods. The route is what allows external access into the service, and it is the address you connect to when accessing the OpenShift web console.
 
@@ -93,7 +93,7 @@ The OpenShift web console is a great example of how OpenShift itself is run and 
 
     ![openshift-console-login](/images/openshift-console-login.png)
 
-3. **Log in with your OpenShift credentials.**
+3. **Log in with your OpenShift credentials.** These are also included on the [access page](access.md) in this repository.
 
 ## The Administrator Perspective
 
@@ -140,13 +140,13 @@ By default, the menu on the left side of the page should be activated and displa
 
     In production environments, nodes are typically run on multiple machines (physical and/or virtual) in order to be more highly available and fault-tolerant.
 
-8. On the Nodes page, *click the hyperlink for one of the Compute nodes*.
+8. On the Nodes page, **click the hyperlink for one of the Compute nodes**.
 
     ![node-overview.png](/images/node-overview.png)
 
     When looking at a specific node, you are provided a view similar to the OpenShift cluster overview page, but now it is scoped to display only the pods, events, metrics, etc. for the specific node of interest.
 
-9. On the Compute Node's page, *click the Details tab*.
+9. On the Compute Node's page, **click the Details tab**.
 
     ![node-details.png](/images/node-details.png)
 
@@ -158,13 +158,13 @@ By default, the menu on the left side of the page should be activated and displa
 
     ![home-projects.png](/images/home-projects.png)
 
-    The rest of the page is populated by projects. A project has been created for you to work in named `userNN-project` (where 'NN' is your user number). If your OpenShift administrator did not create this project for you, you should be able to do so yourself with the `Create Project` button in the top right of the projects page.
+    The rest of the page is populated by projects. A project has been created for you to work in named `userNN-project` (where `NN` is your user number). If your OpenShift administrator did not create this project for you, you should be able to do so yourself with the `Create Project` button in the top right of the projects page.
 
     Any project starting with `openshift-` or `kube-` contain the workloads running the OpenShift platform itself.
 
-11. **Click the userNN-project hyperlink** (where 'NN' is your user number).
+11. **Click the userNN-project hyperlink** (where `NN` is your user number).
 
-    Tip: With so many Projects displayed, you can use the search bar to find yours more easily.
+    *Tip: With so many Projects displayed, you can use the search bar to find yours more easily.*
 
     You will now see the Dashboard for your project.
 
@@ -290,9 +290,9 @@ When you deployed the `national-parks-frontend` image, a deployment resource was
 
     ![scaled-up.png](/images/scaled-up.png)
 
-    This is a simple demonstration of horizontal scaling with Kubernetes. You now have two instances of your pod running in the OpenShift cluster. Traffic to the `parksmap` application will now be distributed to each pod, and if for some reason a pod is lost, that traffic will be redistributed to the remaining pods until a Kubernetes starts another. If a whole compute node is lost, Kubernetes will move the pods to different compute nodes.
+    This is a simple demonstration of horizontal scaling with Kubernetes. You now have two instances of your pod running in the OpenShift cluster. Traffic to the `parksmap` application will now be distributed to each pod, and if for some reason a pod is lost, that traffic will be redistributed to the remaining pods until Kubernetes starts another. If a whole compute node is lost, Kubernetes will move the pods to different compute nodes.
 
-    OpenShift and Kubernetes also support [horizontal autoscaling](https://docs.openshift.com/container-platform/4.14/nodes/pods/nodes-pods-autoscaling.html) of pods based on CPU or memory consumption, but that is outside the scope of this lab.
+    OpenShift and Kubernetes also support [horizontal autoscaling](https://docs.openshift.com/container-platform/4.16/nodes/pods/nodes-pods-autoscaling.html) of pods based on CPU or memory consumption, but that is outside the scope of this lab.
 
 Now that you are more familiar with the OpenShift web console, the next section will introduce you to the OpenShift command line interface (CLI) `oc`. You will use the `oc` CLI to deploy a backend python application to serve data to the frontend `parksmap` as well as to deploy a containerized MongoDB application.
 
@@ -308,7 +308,7 @@ The `oc` CLI is an incredibly powerful tool to manage OpenShift clusters and app
 
 Furthermore, many people familiar with Linux and/or Kubernetes tend to find the `oc` command line an easier and more efficient method of performing tasks, rather than the web-based console.
 
-Like with the OpenShift web console, the OpenShift command line includes functions both [for developers](https://docs.openshift.com/container-platform/4.14/cli_reference/openshift_cli/developer-cli-commands.html) and for [administrators](https://docs.openshift.com/container-platform/4.14/cli_reference/openshift_cli/administrator-cli-commands.html).
+Like with the OpenShift web console, the OpenShift command line includes functions both [for developers](https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/developer-cli-commands.html) and for [administrators](https://docs.openshift.com/container-platform/4.16/cli_reference/openshift_cli/administrator-cli-commands.html).
 
 For those who are familiar with Kubernetes and its `kubectl` CLI tool, the `oc` tool is essentially analogous but with additional features.
 
@@ -316,7 +316,7 @@ For those who are familiar with Kubernetes and its `kubectl` CLI tool, the `oc` 
 
 The frontend application, `parksmap`, needs a backend. In this section, you will deploy a python application named `nationalparks`. This application performs 2D geo-spatial queries against a MongoDB database to locate and return map coordinates of all national parks in North America.
 
-**NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the Windows virtual machine terminal, the command will result in an error.**
+**NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the RHEL virtual machine terminal, the command will result in an error.**
 
 21. From the OpenShift web console, **click your username in the top right corner** (i.e. `Workshop User NN`) and select `Copy login command`.
 
@@ -493,7 +493,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     However, services are **internal** to the cluster. They allow pods to communicate with other pods inside the cluster, but not with the outside world. For external access, we need to introduce another object - **routes**. 
 
-    [Routes](https://docs.openshift.com/container-platform/4.14/rest_api/network_apis/route-route-openshift-io-v1.html) are OpenShift objects - they do not exist in upstream Kubernetes. Routes *expose* services as publicly-accessible addresses for users and applications to interact with. When you access an OpenShift appliction in a web browser, such as the `parksmap` webpage or even the OpenShift console, you navigate to that pod's route.
+    [Routes](https://docs.openshift.com/container-platform/4.16/rest_api/network_apis/route-route-openshift-io-v1.html) are OpenShift objects - they do not exist in upstream Kubernetes. Routes *expose* services as publicly-accessible addresses for users and applications to interact with. When you access an OpenShift appliction in a web browser, such as the `parksmap` webpage or even the OpenShift console, you navigate to that pod's route.
 
     ![routes](images/routes.png)
 
@@ -867,7 +867,7 @@ Once you're ready to clean up your OpenShift project, follow the instructions in
 
 To learn more about OpenShift Container Platform and see the additional tooling it provides to develop and manage more complex applications, please refer to the following links.
 
-- [OpenShift 4.14 Documentation](https://docs.openshift.com/container-platform/4.14/welcome/index.html)
+- [OpenShift 4.16 Documentation](https://docs.openshift.com/container-platform/4.16/welcome/index.html)
 - [OpenShift Product Page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
 - [Red Hat Hybrid Cloud Blog](https://cloud.redhat.com/blog)
 - [OpenShift Learning](https://developers.redhat.com/learn#assembly-id-70171)
