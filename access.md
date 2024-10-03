@@ -9,7 +9,11 @@
 
    ![vm-remote-console](images/vm-remote-console.png)
    
-5. If prompted, log into the RHEL virtual machine with password: `p@ssw0rd` (that's a zero). You may already be logged in when first accessing the VM.
+5. Log into the RHEL virtual machine with password: `p@ssw0rd` (that's a zero). You may already be logged in when first accessing the VM.
+
+   ![vm-remote-console-2](images/vm-remote-console-2.png)
+
+   You may need to hit your `Enter` key to reach the login page.
 
 If you run into an issue where your mouse pointer is not visible, try to open the Virtual Machine in a different browser. If that doesn't work, try to open the VM in a new window with the button in the top right of the VM.
 
