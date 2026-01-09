@@ -206,7 +206,7 @@ By default, the menu on the left side of the page should be activated and displa
 
 ## The Developer Perspective
 
-11. In the left-side Menu, **click the Administrator dropdown, and select Developer**.
+16. In the left-side Menu, **click the Administrator dropdown, and select Developer**.
 
     ![developer-perspective.png](/images/developer-perspective.png)
 
@@ -216,7 +216,7 @@ By default, the menu on the left side of the page should be activated and displa
 
 Switching to the Developer perspective should take you to the *Topology* view. If this isn't the case, select the *Topology* item in the left-side menu. If no workloads are deployed in the selected project, options to start building an application or visit the +Add page or are displayed.
 
-1.  **Click the +Add button in the menu**.
+17.  **Click the +Add button in the menu**.
 
     ![add-workload-notes.png](/images/add-workload-notes.png)
 
@@ -226,9 +226,9 @@ Switching to the Developer perspective should take you to the *Topology* view. I
 
 The simplest way to deploy an application in OpenShift Container Platform is to run an existing container image. The following procedure deploys a front end component of an application called `national-parks-app`. This frontend web application displays an interactive map which shows the location of national parks across North America.
 
-13. From the +Add view in the Developer perspective, **click Container images**.
+18. From the +Add view in the Developer perspective, **click Container images**.
 
-14. **Enter the following values**:
+19. **Enter the following values**:
 
     - Image name from external registry: `quay.io/mmondics/national-parks-frontend:latest`
     - Application name: `national-parks-app`
@@ -244,7 +244,7 @@ The simplest way to deploy an application in OpenShift Container Platform is to 
 
     Note: you can hit the `enter` or `tab` key to enter each individual label.
 
-15. **Click Create**.
+20. **Click Create**.
 
     You are redirected to the Topology page where you will shortly see the `parksmap` deployment in the `national-parks-app` application.
 
@@ -254,23 +254,23 @@ The simplest way to deploy an application in OpenShift Container Platform is to 
 
 The topology page gives you a visual representation of your application where you can view and monitor its components.
 
-16. **Click the circular icon for your `parksmap` deployment**.
+21. **Click the circular icon for your `parksmap` deployment**.
 
     This brings up a window on the right side of the screen with more options for the deployment.
     
-17. **Click the details tab, if not already on it**. 
+22. **Click the details tab, if not already on it**. 
  
     ![topology-2](images/topology-2.png)
 
    Here you can manage its properties including number of copies, labels, or storage.
 
-18. **Click the Resources tab**. 
+23. **Click the Resources tab**. 
 
     ![topology-3](images/topology-3.png)
 
     Here you can access the pod or its logs as well as the route where the application is accessible.
 
-19. **Click the Actions dropdown menu**.
+24. **Click the Actions dropdown menu**.
 
     ![topology-4](images/topology-4.png)
 
@@ -282,7 +282,7 @@ In Kubernetes, a Deployment object defines how an application deploys. In most c
 
 When you deployed the `national-parks-frontend` image, a deployment resource was created with only one pod deployed. However, in most cases, users will want to scale their application to have multiple copies running at the same time. This is one of the core features of Kubernetes and OpenShift that build a more highly available application by creating multiple copies of it across different physical or virtual hosts.
 
-20. On the details tab for the `parksmap` deployment, **click the up arrow next to the blue circle that says `1 pod`**. 
+25. On the details tab for the `parksmap` deployment, **click the up arrow next to the blue circle that says `1 pod`**.
 
     ![scaling-up.png](/images/scaling-up.png)
 
@@ -318,11 +318,11 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 **NOTE for those in the WSC hands-on lab session, you must complete the following steps from within the WSC linux guest. Refer to the [access.md](access.md#connecting-to-openshift-via-the-cli) page. If you try to connect directly from the RHEL virtual machine terminal, the command will result in an error.**
 
-21. From the OpenShift web console, **click your username in the top right corner** (i.e. `Workshop User NN`) and select `Copy login command`.
+26. From the OpenShift web console, **click your username in the top right corner** (i.e. `Workshop User NN`) and select `Copy login command`.
 
     ![copy-login-command](images/copy-login-command.png)
 
-22. **Log in with your OpenShift credentials and click the Display Token hyperlink**.
+27. **Log in with your OpenShift credentials and click the Display Token hyperlink**.
 
 NOTE if the copied command fails, try adding the following flag to the end of the `oc login command`:
 
@@ -330,7 +330,7 @@ NOTE if the copied command fails, try adding the following flag to the end of th
 --insecure-skip-tls-verify
 ```
 
-23. **Copy the line that begins with `oc login`, paste it into a terminal session, and execute the command**.
+28. **Copy the line that begins with `oc login`, paste it into a terminal session, and execute the command**.
 
     Sample output: 
 
@@ -349,7 +349,7 @@ NOTE if the copied command fails, try adding the following flag to the end of th
 
 ## Exploring the `oc` CLI
 
-24. **In your terminal, test out the `oc` CLI**.
+29. **In your terminal, test out the `oc` CLI**.
 
     ```text
     oc --help
@@ -386,7 +386,7 @@ NOTE if the copied command fails, try adding the following flag to the end of th
 
     The `--help` flag will display all of the available options the oc CLI.
 
-25. **Enter the following command**
+30. **Enter the following command**
 
     ```text
     oc new-app --help
@@ -438,7 +438,7 @@ The set of objects created by `oc new-app` depends on the artifacts passed as an
 
 The frontend application, `parksmap`, needs a backend. In this section, you will deploy a python application named `nationalparks`. This application performs 2D geo-spatial queries against a MongoDB database to locate and return map coordinates of all national parks in North America.
 
-26. **Deploy the python backend with the following `oc new-app` command**.
+31. **Deploy the python backend with the following `oc new-app` command**.
 
     ```text
     oc new-app openshift/python:3.6-ubi8~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
@@ -454,7 +454,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     The buildconfig is the configuration file that will be used to build the `nationalparks` container image. This build will automatically begin, and you can check its logs to watch the process. 
 
-27. **Check the `nationalparks` build log**.
+32. **Check the `nationalparks` build log**.
    
     ```text
     oc logs build/nationalparks-1 -f
@@ -462,7 +462,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     The `-f` flag lets you follow the build logs (similar to Linux's 'tail' command). Once you see `Push successful` at the end of the build logs, your new container image has been built and pushed into OpenShift's internal registry. It will then automatically be deployed in a pod.
 
-28. **Check that the `nationalparks` pod is running and ready**.
+33. **Check that the `nationalparks` pod is running and ready**.
 
     ```text
     oc get pods
@@ -481,7 +481,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     Once the `nationalparks` pod is `Running` and has `1/1` containers ready, the application is successfully deployed. However, the backend python application is only accessible from within the OCP cluster. It is not exposed to the outside world, as you may have noticed from the output of the `oc new-app` command: `Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:`
 
-29. **Create a route that exposes the `nationalparks` service**.
+34. **Create a route that exposes the `nationalparks` service**.
 
     ```text
     oc expose service/nationalparks
@@ -497,7 +497,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
     ![routes](images/routes.png)
 
-30. **See the new route that was created**.
+35. **See the new route that was created**.
 
     ```text
     oc get route
@@ -512,13 +512,13 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
     parksmap        parksmap-user01-project.apps.example.com               parksmap        8080-tcp   edge/Redirect   None
     ```
 
-31. **Label the `nationalparks` route as the application backend**.
+36. **Label the `nationalparks` route as the application backend**.
 
     ```text
     oc label route nationalparks type=parksmap-backend
     ```
 
-32. **Navigate to the frontend `parksmap` route in a web browser**. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
+37. **Navigate to the frontend `parksmap` route in a web browser**. Use the `parksmap` `HOST/PORT` value from the `oc get routes` command preceded by `http://`.
 
     For example: `http://parksmap-userNN-project.apps.example.com`
 
@@ -536,7 +536,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 
 The MongoDB you will deploy in this section will store all information about the National Parks, their names and coordinates.
 
-33. **Deploy the MongoDB container**.
+38. **Deploy the MongoDB container**.
 
     ```text
     oc new-app quay.io/mmondics/mongodb:latest --name mongodb-nationalparks -e MONGODB_USER=mongodb -e MONGODB_PASSWORD=mongodb -e MONGODB_DATABASE=mongodb -e MONGODB_ADMIN_PASSWORD=mongodb -l 'app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=mongodb'
@@ -549,11 +549,11 @@ The MongoDB you will deploy in this section will store all information about the
     - `-e` sets environment variables within the resulting container. These can be used like any other environment variable when the container is running, and you can see them by connecting to the pod and running the `env` command
     - `-l` sets labels for this deployment
 
-34. In a later step, you will be adding persistent storage to this MongoDB deployment. Mounting storage requires a certain securityContext, so in preparation, **please run the following command to add the proper securityContext**.
+<!-- 34. In a later step, you will be adding persistent storage to this MongoDB deployment. Mounting storage requires a certain securityContext, so in preparation, **please run the following command to add the proper securityContext**.
 
     ```text
     oc patch deployment mongodb-nationalparks --type='json' -p='[{"op":"add","path":"/spec/template/spec/securityContext","value":{"fsGroup":184,"runAsGroup":184,"runAsUser":184}}]'
-    ```
+    ``` -->
 
     Once again, you can check `oc get pods` to see when the MongoDB pod is ready.
 
@@ -573,13 +573,13 @@ The *Secret* object provides a mechanism to hold sensitive information such as p
 
 The following procedure adds the secret `nationalparks-mongodb-parameters` and mounts it to the `nationalparks` workload.
 
-34. **Create a secret holding sensitive information** (usernames and passwords).
+39. **Create a secret holding sensitive information** (usernames and passwords).
 
     ```text
     oc create secret generic nationalparks-mongodb-parameters --from-literal=DATABASE_SERVICE_NAME=mongodb-nationalparks --from-literal=MONGODB_USER=mongodb --from-literal=MONGODB_PASSWORD=mongodb --from-literal=MONGODB_DATABASE=mongodb --from-literal=MONGODB_ADMIN_PASSWORD=mongodb
     ```
 
-35. **Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalparks` workload**.
+40. **Update the environment variable to attach the `nationalparks-mongodb-parameters` secret to the `nationalparks` workload**.
 
     ```text
     oc set env --from=secret/nationalparks-mongodb-parameters deploy/nationalparks
@@ -587,7 +587,7 @@ The following procedure adds the secret `nationalparks-mongodb-parameters` and m
 
     The `nationalparks` deployment will notice that a change has been made, and it will create a new pod with these changes applied. Check with `oc get pods` until the new pod is up and running.
 
-36. Once the `mongodb-nationalparks` pod is running and ready, **run the following command to load National Park data into MongoDB**.
+41. Once the `mongodb-nationalparks` pod is running and ready, **run the following command to load National Park data into MongoDB**.
 
     **Make sure that you are in your own project before running the command.**
 
@@ -597,7 +597,7 @@ The following procedure adds the secret `nationalparks-mongodb-parameters` and m
 
     If you see `"Items inserted in database: 204"`, the data was successfully loaded.
 
-37. Finally, **return to your frontend `parksmap` application in a web browser**.
+42. Finally, **return to your frontend `parksmap` application in a web browser**.
 
     ![parksmap-loaded](images/parksmap-loaded.png)
 
@@ -624,9 +624,9 @@ In this lab, you will use ODF to store the National Park locations that are insi
 
 ### Adding Persistence to the Mongo Database
 
-38. **In the Administrator perspective of the OpenShift console, navigate to Storage -> PersistentVolumeClaims and click the Create PersistentVolumeClaim button.**
+43. **In the Administrator perspective of the OpenShift console, navigate to Storage -> PersistentVolumeClaims and click the Create PersistentVolumeClaim button.**
 
-4.  **Fill out the form as follows:**
+44. **Fill out the form as follows:**
     
     - StorageClass: `ocs-storagecluster-cephfs`
     - PersistentVolumeClaim name: `pvc-userNN` (where `NN` is your user number)
@@ -640,19 +640,19 @@ In this lab, you will use ODF to store the National Park locations that are insi
 
     Before adding a persistent volume to the database pod, we must first remove the ephemeral volume that currently exists.
 
-1.  **From the OpenShift developer topology page, click the icon for the MongoDB application, then the link for the deployment.**
+45. **From the OpenShift developer topology page, click the icon for the MongoDB application, then the link for the deployment.**
 
     ![mongodb-deployment](images/mongodb-deployment.png)
 
-2.  **Scroll down to the Volumes section, and remove the single volume named `mongodb-nationalparks-volume-1`**
+46. **Scroll down to the Volumes section, and remove the single volume named `mongodb-nationalparks-volume-1`**
 
     ![remove-volume](images/remove-volume.png)
 
-3.  **Scroll back to top of the MongoDB deployment page, click the Actions dropdown, and select Add Storage.**
+47. **Scroll back to top of the MongoDB deployment page, click the Actions dropdown, and select Add Storage.**
 
     ![add-storage](images/add-storage.png)
 
-4.  Fill the form as follows:
+48. Fill the form as follows:
     
     - Storage type: `PersistentVolumeClaim`
     - PersistentVolumeClaim: `Use existing claim` -> `pvc-userNN`
@@ -662,29 +662,29 @@ In this lab, you will use ODF to store the National Park locations that are insi
 
     Your MongoDB database is now persistent and the data will continue to exist after the pod restarts or is moved.
 
-5. **Load the MongoDB database again**. The data was deleted when you removed the existing volume.
+49. **Load the MongoDB database again**. The data was deleted when you removed the existing volume.
 
     ```text
     oc exec $(oc get pods -l component=nationalparks | tail -n 1 | awk '{print $1;}') -- curl -s http://localhost:8080/ws/data/load
     ```
 
-6. **Delete your MongoDB pod so that it recycles. You can do so either via the OpenShift console, or by entering the following command in the `oc` CLI:**
+50. **Delete your MongoDB pod so that it recycles. You can do so either via the OpenShift console, or by entering the following command in the `oc` CLI:**
 
     ```
     oc delete po -l deployment=mongodb-nationalparks
     ```
 
-7. Once the pod is back up and running, **refresh the webpage for your National Parks application and see that all of the icons and locations of parks have persisted through the pod restart.**
+51. Once the pod is back up and running, **refresh the webpage for your National Parks application and see that all of the icons and locations of parks have persisted through the pod restart.**
 
 ### Exploring the OpenShift Data Foundation Console
 
-8. **In the OpenShift Administrator perspective, navigate to Storage -> Data Foundation.**
+52. **In the OpenShift Administrator perspective, navigate to Storage -> Data Foundation.**
 
     ![odf-home](images/odf-home.png)
 
     This is the main page for OpenShift Data Foundation where you can see the status of your storage system, its capacity, performance, and more.
 
-9. Navigate to the `Storage Systems` tab, and then click the `ocs-storagecluster-storagesystem` hyperlink.
+53. Navigate to the `Storage Systems` tab, and then click the `ocs-storagecluster-storagesystem` hyperlink.
 
     On the Block and File tab, you can see information about the capacity and performance of block and file storage. You should also see your `userNN-project` listed as a storage consumer under *Used Capacity Breakdown*. 
 
@@ -714,11 +714,11 @@ The Grafana-Alertmanager-Prometheus monitoring stack provides a highly configura
 
 OpenShift provides a web interface to *Prometheus*, which enables you to run Prometheus Query Language (PromQL) queries and visualize the metrics on a plot. This functionality provides an extensive overview of the cluster state and helps to troubleshoot problems.
 
-1. In the OpenShift console, **switch to the Administrator perspective** if you are not already on it.
+54. In the OpenShift console, **switch to the Administrator perspective** if you are not already on it.
 
     ![administrator-perspective](images/administrator-perspective.png)
 
-1. In the menu bar on the left side of the page, **click Observe and then Metrics**.
+55. In the menu bar on the left side of the page, **click Observe and then Metrics**.
 
     ![menu-metrics](images/menu-metrics.png)
 
@@ -728,23 +728,23 @@ OpenShift provides a web interface to *Prometheus*, which enables you to run Pro
 
     Once you enter a query, the graph will populate.
 
-1. **Enter the following string in the query bar**:
+56. **Enter the following string in the query bar**:
 
     ```text
     namespace:container_memory_usage_bytes:sum
     ```
 
-2. **Hit your enter key or click the associated query result that is returned**.
+57. **Hit your enter key or click the associated query result that is returned**.
 
     The string will populate the query text box.
 
-3. **If the graph and table are not automatically populated. click the blue "Run Queries" button**.
+58. **If the graph and table are not automatically populated. click the blue "Run Queries" button**.
 
     The graph should now display the memory usage over time for each namespace.
 
     ![memory-usage](images/memory-usage.png)
 
-4. **Scroll down the page** to the table displaying each namespace and its memory usage in bytes.
+59. **Scroll down the page** to the table displaying each namespace and its memory usage in bytes.
 
     ![memory-table](images/memory-table.png)
 
@@ -756,7 +756,7 @@ OpenShift provides a web interface to *Prometheus*, which enables you to run Pro
 
     Because of OpenShift’s vast data production and Prometheus’ ability to process it, certain queries can produce simply too much data to be useful. Because Prometheus makes use of labels, we can use these labels to filter data to make better sense of it.
 
-5. **Modify your query to the following**:
+60. **Modify your query to the following**:
 
     ```text
     namespace:container_memory_usage_bytes:sum{namespace="userNN-project"}
@@ -766,7 +766,7 @@ OpenShift provides a web interface to *Prometheus*, which enables you to run Pro
 
     Also, notice that they are squiggly brackets `{}` in the query, not regular parentheses.
 
-6. **Click Run Queries**
+61. **Click Run Queries**
 
     ![memory-namespaced](images/memory-namespaced.png)
 
@@ -778,7 +778,7 @@ As you might have noticed, working directly with Prometheus can be tedious and r
 
 ### OpenShift Monitoring (Grafana)
 
-1. **From the OpenShift menu, navigate to Observability -> Dashboards**.
+62. **From the OpenShift menu, navigate to Observability -> Dashboards**.
 
     ![menu-dashboards](images/menu-dashboards.png)
 
@@ -786,13 +786,13 @@ As you might have noticed, working directly with Prometheus can be tedious and r
 
     ![default-in-browser](images/default-in-browser.png)
 
-1. **Click the "Dashboard" dropdown in the top-left of the page, and select `Kubernetes / Compute Resources / Cluster`**.
+63. **Click the "Dashboard" dropdown in the top-left of the page, and select `Kubernetes / Compute Resources / Cluster`**.
 
     ![compute-resources-dashboard](/images/compute-resources-dashboard.png)
 
     You will see a dashboard populated with information related to the cluster’s compute resources such as CPU and memory utilization. This dashboard displays CPU usage and CPU quota/memory requests by namespace.
 
-1. **Scroll down the page and look through the various CPU/memory/networking metrics.**
+64. **Scroll down the page and look through the various CPU/memory/networking metrics.**
 
     Notice that each chart has an `Inspect` option. Clicking it will take you to the relevant Metrics page with the proper Prometheus query applied for more fine-grained detail.
 
@@ -827,13 +827,13 @@ The `labels` clause allows specifying a set of additional labels to be attached 
 
 The `annotations` clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
 
-1. In the menu bar on the left side of the OpenShift console, **click Observe and then Alerting**.
+65. In the menu bar on the left side of the OpenShift console, **click Observe and then Alerting**.
 
     You will be taken to an Alertmanager interface within the OpenShift console.
 
     ![alertmanager](images/alertmanager.png)
 
-1. **Click the Alerting Rules tab** to see the 100+ alerts that are not currently firing (hopefully!)
+66. **Click the Alerting Rules tab** to see the 100+ alerts that are not currently firing (hopefully!)
 
     ![alerting-rules](images/alerting-rules.png)
 
@@ -849,7 +849,7 @@ You cannot see and forwarded alerts for this OpenShift, but as an example, see t
 
 Once you're ready to clean up your OpenShift project, follow the instructions in this section.
 
-38. **Run the following command to clean up most of the objects in your project**. Remember to change the value of `NN`.
+67. **Run the following command to clean up most of the objects in your project**. Remember to change the value of `NN`.
 
     ```text
     oc delete all --all -n userNN-project
@@ -857,7 +857,7 @@ Once you're ready to clean up your OpenShift project, follow the instructions in
 
     This will delete some of the objects in your project, but it will not delete the secret you created.
 
-39. **Delete your secret with the following command**.
+68. **Delete your secret with the following command**.
 
     ```text
     oc delete secret nationalparks-mongodb-parameters -n userNN-project
