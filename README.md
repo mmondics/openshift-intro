@@ -441,7 +441,7 @@ The frontend application, `parksmap`, needs a backend. In this section, you will
 26. **Deploy the python backend with the following `oc new-app` command**.
 
     ```text
-    oc new-app python~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
+    oc new-app openshift/python:3.6-ubi8~https://github.com/mmondics/national-parks --context-dir source/nationalparks-py --name nationalparks -l 'app=national-parks-app,component=nationalparks,role=backend,app.kubernetes.io/part-of=national-parks-app,app.kubernetes.io/name=python'
     ```
 
     A few things to notice about this command:
